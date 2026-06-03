@@ -1,0 +1,195 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Business {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  users         User[]
+  categories    Category[]
+  inventory     InventoryItem[]
+  stockHistory  StockHistory[]
+  notifications Notification[]
+  notificationDeliveries NotificationDelivery[]
+  passwordResets PasswordResetToken[]
+  auditLogs     AuditLog[]
+  settings      Setting?
+
+  @@map("businesses")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  businessId   String
+  name         String
+  email        String   @unique
+  role         Role
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  business      Business       @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  notifications Notification[]
+  passwordResets PasswordResetToken[]
+  auditLogs     AuditLog[]
+
+  @@index([businessId])
+  @@map("users")
+}
+
+model Category {
+  id         String @id @default(uuid())
+  businessId String
+  name       String
+  group      String
+
+  business  Business        @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  inventory InventoryItem[]
+
+  @@unique([businessId, name])
+  @@index([businessId])
+  @@map("categories")
+}
+
+model InventoryItem {
+  id           String   @id @default(uuid())
+  businessId   String
+  categoryId   String
+  name         String
+  sku          String
+  type         String
+  quantity     Int
+  soldQuantity Int      @default(0)
+  costPrice    Decimal  @db.Decimal(12, 2)
+  sellingPrice Decimal  @db.Decimal(12, 2)
+  location     String
+  barcode      String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id])
+  stockHistory StockHistory[]
+
+  @@index([businessId])
+  @@index([businessId, categoryId])
+  @@index([businessId, sku])
+  @@index([businessId, barcode])
+  @@map("inventory_items")
+}
+
+model StockHistory {
+  id           String   @id @default(uuid())
+  businessId   String
+  userId       String?
+  categoryId   String
+  itemId       String
+  action       String
+  oldQuantity  Int
+  newQuantity  Int
+  soldQuantity Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  business Business      @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  item     InventoryItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@index([categoryId])
+  @@index([itemId])
+  @@map("stock_history")
+}
+
+model Notification {
+  id         String   @id @default(uuid())
+  businessId String
+  userId     String
+  message    String
+  read       Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deliveries NotificationDelivery[]
+
+  @@index([businessId, userId])
+  @@map("notifications")
+}
+
+model NotificationDelivery {
+  id             String   @id @default(uuid())
+  businessId     String
+  notificationId String
+  channel        String
+  destination    String
+  status         String
+  createdAt      DateTime @default(now())
+
+  business     Business     @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  notification Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@index([notificationId])
+  @@map("notification_deliveries")
+}
+
+model PasswordResetToken {
+  id         String    @id @default(uuid())
+  businessId String
+  userId     String
+  tokenHash  String    @unique
+  createdAt  DateTime  @default(now())
+  expiresAt  DateTime
+  usedAt     DateTime?
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([businessId, userId])
+  @@index([expiresAt])
+  @@map("password_reset_tokens")
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  businessId String
+  userId     String?
+  action     String
+  createdAt  DateTime @default(now())
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user     User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([businessId])
+  @@map("audit_logs")
+}
+
+model Setting {
+  id                      String  @id @default(uuid())
+  businessId              String  @unique
+  lowStockThreshold       Int     @default(8)
+  darkMode                Boolean @default(false)
+  notifyCeoOnManagerStock Boolean @default(true)
+  emailNotifications      Boolean @default(true)
+  smsNotifications        Boolean @default(false)
+  accountingProvider      String  @default("CSV")
+  accountingEmail         String  @default("")
+  smsPhone                String  @default("")
+  currency                String  @default("USD")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@map("settings")
+}
+
+enum Role {
+  CEO
+  Admin
+  Manager
+  Staff
+}

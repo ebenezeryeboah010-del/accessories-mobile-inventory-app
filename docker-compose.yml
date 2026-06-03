@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: mobile_inventory
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/mobile_inventory?schema=public
+      JWT_SECRET: change-this-before-production
+      PORT: 4173
+      CORS_ORIGIN: http://localhost:4173
+    ports:
+      - "4173:4173"
+    command: sh -c "npx prisma db push && npm run db:seed && npm run start:postgres"
+
+volumes:
+  postgres_data:
