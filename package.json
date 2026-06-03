@@ -5,6 +5,7 @@
   "description": "Mobile phone and accessories inventory management web app generated from the prompt pack.",
   "scripts": {
     "start": "node server.js",
+    "build": "prisma generate --force",
     "start:postgres": "node server.postgres.js",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev --name init",
@@ -13,7 +14,7 @@
     "test": "node tests/api-smoke.test.js"
   },
   "dependencies": {
-    "@prisma/client": "^7.8.0",
+    "@prisma/client": "^6.19.3",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.19.2",
