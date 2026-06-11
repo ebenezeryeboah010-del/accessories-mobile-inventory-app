@@ -112,27 +112,6 @@ async function audit(businessId, userId, action) {
   await prisma.auditLog.create({ data: { businessId, userId, action } });
 }
 
-console.log("LOGIN REQUEST", body.email);
-
-/*const user = await prisma.user.findUnique({
-  where: { email: body.email.toLowerCase() },
-  include: {
-    business: {
-      include: { settings: true }
-    }
-  }
-});
-
-console.log("USER FOUND", user);*/
-const user = await prisma.user.findUnique({
-  where: { email: body.email.toLowerCase() },
-  include: {
-    business: {
-      include: { settings: true }
-    }
-  }
-});
-
 const loginSchema = z.object({ email: z.string().email(), password: z.string().min(1) });
 const forgotPasswordSchema = z.object({ email: z.string().email() });
 const resetPasswordSchema = z.object({ token: z.string().min(20), password: z.string().min(8) });
@@ -549,8 +528,7 @@ app.get("*", (req, res) => {
 app.use((error, req, res, next) => {
   if (error instanceof z.ZodError) return res.status(422).json({ error: error.errors[0]?.message || "Invalid input" });
   console.error(error);
-  res.status(500).json({ error:  error.message,  stack: process.env.NODE_ENV !== "production" ? error.stack : undefined
-  });
+  res.status(500).json({ error: "Server error" });
 });
 
 function decimalItem(item) {

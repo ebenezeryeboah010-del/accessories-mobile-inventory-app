@@ -1,0 +1,8 @@
+{
+  "name": "MobileHub Inventory",
+  "description": "Full-stack multi-tenant web inventory application built with Express, Prisma, and PostgreSQL featuring secure JWT sessions, password strength checkers, real-time validations, stock costing splits, low stock threshold reports, and advanced custom summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,3607 @@
+{
+  "businesses": [
+    {
+      "id": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "MobileHub Accessories",
+      "createdAt": "2026-05-23T01:31:01.643Z",
+      "settings": {
+        "lowStockThreshold": 2,
+        "darkMode": false,
+        "notifyCeoOnManagerStock": true,
+        "currency": "GBP"
+      }
+    },
+    {
+      "id": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "JOSEBENHub Of ACCESSORIES",
+      "createdAt": "2026-05-23T02:55:40.319Z",
+      "settings": {
+        "lowStockThreshold": 8,
+        "darkMode": true,
+        "notifyCeoOnManagerStock": true,
+        "currency": "GHS",
+        "emailNotifications": true,
+        "smsNotifications": true,
+        "accountingProvider": "CSV",
+        "accountingEmail": "portiadamoah@gmail.com",
+        "smsPhone": "0595270376"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Amina CEO",
+      "email": "ceo@mobilehub.test",
+      "role": "CEO",
+      "passwordHash": "f40cee7207c80a7b2e122da8b6d5b532:72aa58b032101b19fbb0aa2a5f52337c900278b9f078f2843e0112ee8357e842a218f8e72d435ee701f1075997420296d212c30a7bff515b60b1d71ffdced619",
+      "createdAt": "2026-05-23T01:31:01.643Z"
+    },
+    {
+      "id": "df2ba31f-32ee-4e2d-96b6-eadf6fd96eb5",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Musa Manager",
+      "email": "manager@mobilehub.test",
+      "role": "Manager",
+      "passwordHash": "3f95a121a77f3738d5ecb0fab17d7f6c:bec6cb332e3debd58d72a0cb36b0cf7980bfaf8c82a2ba25e4d355accfaed02421aee860ff583556dde82d9cdd57f88ba219badf470cf4a9c81f9d75d3f116c1",
+      "createdAt": "2026-05-23T01:31:01.643Z"
+    },
+    {
+      "id": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Yeboah Eben",
+      "email": "ebenezeryeboahtakyi@gmail.com",
+      "role": "CEO",
+      "passwordHash": "4e9983b05701248b9c466ce172227515:be7dc96e7a1521caf4d5bc4865c31709480485b9ddbce0f6e9a3164bdc20fb53af948156e5a553102f5127039765bcd6eaec671e92dba2c592accbcb0770a45c",
+      "createdAt": "2026-05-23T02:55:40.319Z"
+    },
+    {
+      "id": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "DAMOAH PORTIA",
+      "email": "portiadamoah@gmail.com",
+      "role": "Manager",
+      "passwordHash": "5b98a29d8d34730c50efcea8ca104228:babbe1892fcba3103650cf649ba36eebd46ef3fbf7cde890d07a9900ef533d818f88299b1fb0bd237b50137f7369e409a2b9b61666c9eaf692e159a0e4d7bd55",
+      "createdAt": "2026-05-23T04:57:16.910Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "2100e388-6735-4505-a635-eb62ab5aa119",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Android phones",
+      "group": "Phones"
+    },
+    {
+      "id": "d8c26c43-6171-4284-92f6-3e745413cfc8",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Cell phones",
+      "group": "Phones"
+    },
+    {
+      "id": "273ed501-14d6-4b7d-8913-63fe8e86233c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Android accessories",
+      "group": "Accessories"
+    },
+    {
+      "id": "ecc2352f-09d0-44ea-8764-c1cbb36c2159",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Cell phone accessories",
+      "group": "Accessories"
+    },
+    {
+      "id": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Chargers",
+      "group": "Power"
+    },
+    {
+      "id": "bb3ff47a-9503-4743-b189-5e01cffbaa73",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Headsets and earphones",
+      "group": "Audio"
+    },
+    {
+      "id": "e5898e10-baa6-4c48-8819-ae55b8647d0b",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "AirPods",
+      "group": "Audio"
+    },
+    {
+      "id": "efbf4434-15d1-4cb7-a129-d6e49b9a9e5f",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Screen protectors",
+      "group": "Protection"
+    },
+    {
+      "id": "f6f49bf2-cd51-4b7a-adff-4374d732dff5",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Phone batteries",
+      "group": "Power"
+    },
+    {
+      "id": "4f239d48-68fb-42db-9c23-69d6709cc7c5",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "name": "Other accessories",
+      "group": "Accessories"
+    },
+    {
+      "id": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Android phones",
+      "group": "Phones"
+    },
+    {
+      "id": "bc6181fc-a6e5-4dad-8825-d4dd9c62c9ad",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Cell phones",
+      "group": "Phones"
+    },
+    {
+      "id": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Android accessories",
+      "group": "Accessories"
+    },
+    {
+      "id": "85590dec-9ce1-4106-9465-bd3dda34e875",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Cell phone accessories",
+      "group": "Accessories"
+    },
+    {
+      "id": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Chargers",
+      "group": "Accessories"
+    },
+    {
+      "id": "4071d677-81ce-4b6c-bcda-6e76ea17f160",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Headsets and earphones",
+      "group": "Phones"
+    },
+    {
+      "id": "43bafb65-41a4-420f-823a-3bc3cf8ae381",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "AirPods",
+      "group": "Accessories"
+    },
+    {
+      "id": "55fcf15e-9cf8-43aa-bc0a-8fd0f38f35ab",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Screen protectors",
+      "group": "Accessories"
+    },
+    {
+      "id": "fe15b61c-a728-4809-bba2-75c5e0df0e43",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Phone batteries",
+      "group": "Accessories"
+    },
+    {
+      "id": "ad17557e-f467-4a7d-8b02-efb86468c171",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "name": "Other accessories",
+      "group": "Accessories"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "96a839cf-7bfb-4f29-a945-76f3d33477f4",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "2100e388-6735-4505-a635-eb62ab5aa119",
+      "name": "Samsung Galaxy A35",
+      "sku": "SAMSUNG-GALAXY-A35",
+      "type": "Phones",
+      "quantity": 18,
+      "costPrice": 210,
+      "sellingPrice": 315,
+      "location": "Shelf A1",
+      "barcode": "573436168092",
+      "createdAt": "2026-05-23T01:31:02.413Z",
+      "updatedAt": "2026-05-23T01:31:02.413Z"
+    },
+    {
+      "id": "426a12c4-482f-45ca-80a9-e8d5e648225c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "45W USB-C Fast Charger",
+      "sku": "45W-USB-C-FAST-CHA",
+      "type": "Android accessories",
+      "quantity": 6,
+      "costPrice": 7,
+      "sellingPrice": 15,
+      "location": "Bin C4",
+      "barcode": "334189619371",
+      "createdAt": "2026-05-23T01:31:02.414Z",
+      "updatedAt": "2026-05-23T01:31:02.414Z"
+    },
+    {
+      "id": "3d269be8-36ec-4de9-a59e-29da55753a33",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "bb3ff47a-9503-4743-b189-5e01cffbaa73",
+      "name": "Braided Type-C Earphones",
+      "sku": "BRAIDED-TYPE-C-EAR",
+      "type": "Cell phone accessories",
+      "quantity": 24,
+      "costPrice": 4,
+      "sellingPrice": 10,
+      "location": "Bin D2",
+      "barcode": "470298515836",
+      "createdAt": "2026-05-23T01:31:02.414Z",
+      "updatedAt": "2026-05-23T01:31:02.414Z"
+    },
+    {
+      "id": "f515a228-c187-44ee-b566-ce9f16ec74a6",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "e5898e10-baa6-4c48-8819-ae55b8647d0b",
+      "name": "Wireless Earbuds Pro",
+      "sku": "WIRELESS-EARBUDS-P",
+      "type": "Cell phone accessories",
+      "quantity": 11,
+      "costPrice": 19,
+      "sellingPrice": 39,
+      "location": "Glass case",
+      "barcode": "723007770151",
+      "createdAt": "2026-05-23T01:31:02.415Z",
+      "updatedAt": "2026-05-23T01:31:02.415Z"
+    },
+    {
+      "id": "c6f10bac-af10-43fb-802d-6beb1d70629e",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "efbf4434-15d1-4cb7-a129-d6e49b9a9e5f",
+      "name": "Tempered Glass Screen Saver",
+      "sku": "TEMPERED-GLASS-SCR",
+      "type": "Android accessories",
+      "quantity": 84,
+      "costPrice": 1,
+      "sellingPrice": 4,
+      "location": "Drawer S",
+      "barcode": "490109725923",
+      "createdAt": "2026-05-23T01:31:02.415Z",
+      "updatedAt": "2026-05-23T01:31:02.415Z"
+    },
+    {
+      "id": "b5cb6337-350e-41f2-8dbe-d7407b22edfd",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "f6f49bf2-cd51-4b7a-adff-4374d732dff5",
+      "name": "BL-5C Replacement Battery",
+      "sku": "BL-5C-REPLACEMENT-",
+      "type": "Cell phone accessories",
+      "quantity": 5,
+      "costPrice": 3,
+      "sellingPrice": 8,
+      "location": "Battery rack",
+      "barcode": "932859739562",
+      "createdAt": "2026-05-23T01:31:02.415Z",
+      "updatedAt": "2026-05-23T01:31:02.415Z"
+    },
+    {
+      "id": "a8fbffc8-9561-46bb-b965-7a202d4d5c78",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "380654332211",
+      "createdAt": "2026-05-23T01:46:11.733Z",
+      "updatedAt": "2026-05-23T01:46:11.733Z"
+    },
+    {
+      "id": "8e9b4520-83e4-4b86-9658-62a43895cd2c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "608569337152",
+      "createdAt": "2026-05-23T01:46:13.142Z",
+      "updatedAt": "2026-05-23T01:46:13.142Z"
+    },
+    {
+      "id": "ef791642-a657-400f-853a-c8ad2f991bf3",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "608065571405",
+      "createdAt": "2026-05-23T01:46:14.102Z",
+      "updatedAt": "2026-05-23T01:46:14.102Z"
+    },
+    {
+      "id": "c2d9ad44-3898-4582-b8f4-14f2b7f6e243",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "720970069644",
+      "createdAt": "2026-05-23T01:46:14.710Z",
+      "updatedAt": "2026-05-23T01:46:14.710Z"
+    },
+    {
+      "id": "056ca9fe-408f-4e91-8193-5250764f2453",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "203064129622",
+      "createdAt": "2026-05-23T01:46:14.870Z",
+      "updatedAt": "2026-05-23T01:46:14.870Z"
+    },
+    {
+      "id": "9a4da310-1b7a-45fa-84f1-ecd2aeb3a541",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "522491852581",
+      "createdAt": "2026-05-23T01:46:15.056Z",
+      "updatedAt": "2026-05-23T01:46:15.056Z"
+    },
+    {
+      "id": "525ade78-071f-484b-b7cf-4fe9f6a679a8",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "658703152315",
+      "createdAt": "2026-05-23T01:46:15.329Z",
+      "updatedAt": "2026-05-23T01:46:15.329Z"
+    },
+    {
+      "id": "6b5cf05d-a13c-4eb4-a6bd-561ef754cfd7",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "453294991051",
+      "createdAt": "2026-05-23T01:46:16.321Z",
+      "updatedAt": "2026-05-23T01:46:16.321Z"
+    },
+    {
+      "id": "4ab3371f-669d-486e-96e9-c47e2c7fec87",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "634483719422",
+      "createdAt": "2026-05-23T01:46:16.513Z",
+      "updatedAt": "2026-05-23T01:46:16.513Z"
+    },
+    {
+      "id": "83c0958e-e469-47cf-a619-3f333b4a0990",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 6,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "687903471262",
+      "createdAt": "2026-05-23T01:46:16.922Z",
+      "updatedAt": "2026-05-23T01:46:16.922Z"
+    },
+    {
+      "id": "c2db497b-d25b-4baa-8af6-2340f81fd061",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB Charger",
+      "sku": "USB-CHARGER",
+      "type": "Accessory",
+      "quantity": 5,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "928247045517",
+      "createdAt": "2026-05-23T01:46:49.866Z",
+      "updatedAt": "2026-05-23T01:46:49.866Z"
+    },
+    {
+      "id": "9ea5c4cb-7be5-4f80-9acb-a8a09c923ec8",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB charger",
+      "sku": "USB-CHARGER",
+      "type": "Android Phone Accessories",
+      "quantity": 3,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "923639146425",
+      "createdAt": "2026-05-23T02:49:01.097Z",
+      "updatedAt": "2026-05-23T02:49:01.097Z"
+    },
+    {
+      "id": "6048fd08-84f5-4f16-ac57-221c8f78e664",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "categoryId": "84512bc7-ad11-4cc4-81c4-7ca6dc23d433",
+      "name": "USB charger",
+      "sku": "USB-CHARGER",
+      "type": "Android Accessories",
+      "quantity": 8,
+      "costPrice": 10,
+      "sellingPrice": 30,
+      "location": "Main store",
+      "barcode": "987312713641",
+      "createdAt": "2026-05-23T02:51:27.997Z",
+      "updatedAt": "2026-05-23T02:51:27.997Z"
+    },
+    {
+      "id": "0d748ca6-d796-4426-afac-73a8c7c742f4",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "name": "USB charger",
+      "sku": "USB-CHARGER",
+      "type": "Android Accessories",
+      "quantity": 5,
+      "soldQuantity": 3,
+      "costPrice": 20,
+      "sellingPrice": 40,
+      "location": "Main store",
+      "barcode": "831178813034",
+      "createdAt": "2026-06-03T01:17:09.525Z",
+      "updatedAt": "2026-06-03T01:49:14.856Z"
+    },
+    {
+      "id": "8d6aa4cb-35bc-492a-98e0-957be03d1ebe",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "name": "Samsung A03 Core",
+      "sku": "SAMSUNG-A03-CORE",
+      "type": "Android Phone",
+      "quantity": 2,
+      "soldQuantity": 2,
+      "costPrice": 1200,
+      "sellingPrice": 1500,
+      "location": "Main store",
+      "barcode": "152459255005",
+      "createdAt": "2026-06-03T01:21:05.341Z",
+      "updatedAt": "2026-06-03T01:50:49.108Z"
+    },
+    {
+      "id": "8fdeb82b-f3f3-4264-bcfd-8e6bb2f40635",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "categoryId": "43bafb65-41a4-420f-823a-3bc3cf8ae381",
+      "name": "Airpod",
+      "sku": "AIRPOD",
+      "type": "Android Accessories",
+      "quantity": 8,
+      "soldQuantity": 8,
+      "costPrice": 30,
+      "sellingPrice": 70,
+      "location": "Main store",
+      "barcode": "185460371560",
+      "createdAt": "2026-06-03T01:39:48.330Z",
+      "updatedAt": "2026-06-03T01:52:43.005Z"
+    },
+    {
+      "id": "b4250ff7-114d-4b2d-9010-6989751ae8ab",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "categoryId": "bc6181fc-a6e5-4dad-8825-d4dd9c62c9ad",
+      "name": "Itel",
+      "sku": "ITEL",
+      "type": "Cell Phone",
+      "quantity": 5,
+      "soldQuantity": 4,
+      "costPrice": 100,
+      "sellingPrice": 150,
+      "location": "Main store",
+      "barcode": "532367092656",
+      "createdAt": "2026-06-03T01:41:28.910Z",
+      "updatedAt": "2026-06-03T01:51:32.875Z"
+    },
+    {
+      "id": "4aa1c23b-ce8d-4f78-a5e7-8c9fd413e01d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "categoryId": "4071d677-81ce-4b6c-bcda-6e76ea17f160",
+      "name": "Headset",
+      "sku": "HEADSET",
+      "type": "Android Accessories",
+      "quantity": 3,
+      "soldQuantity": 0,
+      "costPrice": 10,
+      "sellingPrice": 30,
+      "location": "Main store",
+      "barcode": "770359587214",
+      "createdAt": "2026-06-03T01:42:55.891Z",
+      "updatedAt": "2026-06-03T01:42:55.891Z"
+    },
+    {
+      "id": "d31dab79-da11-4ec7-a1a2-ebbae9dc9e72",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "categoryId": "55fcf15e-9cf8-43aa-bc0a-8fd0f38f35ab",
+      "name": "Infinix Hot 8 Screen Saver",
+      "sku": "INFINIX-HOT-8-SCREEN-SAV",
+      "type": "Android Phone Accessories",
+      "quantity": 30,
+      "soldQuantity": 10,
+      "costPrice": 10,
+      "sellingPrice": 30,
+      "location": "Main store",
+      "barcode": "974288821114",
+      "createdAt": "2026-06-03T01:44:43.553Z",
+      "updatedAt": "2026-06-03T01:51:57.785Z"
+    },
+    {
+      "id": "c30bf653-7c85-45c2-bcb1-7cefabe13f8c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "name": "USB charger",
+      "sku": "USB-CHARGER",
+      "type": "Android Accessories",
+      "quantity": 4,
+      "soldQuantity": 0,
+      "costPrice": 40,
+      "sellingPrice": 60,
+      "location": "Main store",
+      "barcode": "212816318201",
+      "createdAt": "2026-06-03T01:58:37.169Z",
+      "updatedAt": "2026-06-03T02:03:31.934Z"
+    },
+    {
+      "id": "311b0a92-5041-4628-9180-a3d315a0e1ef",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "name": "USB charger",
+      "sku": "USB-CHARGER",
+      "type": "Android Accessories",
+      "quantity": 65,
+      "soldQuantity": 0,
+      "costPrice": 40,
+      "sellingPrice": 80,
+      "location": "Main store",
+      "barcode": "691055965019",
+      "createdAt": "2026-06-03T02:04:48.799Z",
+      "updatedAt": "2026-06-03T02:04:48.799Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "40f5f515-3289-405e-8383-9f15f5692fad",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "message": "Manager added stock: USB charger",
+      "read": false,
+      "createdAt": "2026-05-23T02:51:27.998Z"
+    },
+    {
+      "id": "4067a98e-bbf6-4565-ab51-2b7aecb0ed66",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: airpod",
+      "read": false,
+      "createdAt": "2026-05-23T04:59:05.071Z"
+    },
+    {
+      "id": "517b044a-cdb8-452a-9c06-f9571c7d5e0d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: Itel Phone",
+      "read": false,
+      "createdAt": "2026-05-23T05:24:25.487Z"
+    },
+    {
+      "id": "50a92449-564d-4abf-9d86-19e972deac0a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: cell battery",
+      "read": false,
+      "createdAt": "2026-05-23T05:35:24.588Z"
+    },
+    {
+      "id": "f090b895-5b1c-454d-b0da-1a658bb000a0",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: airpod",
+      "read": false,
+      "createdAt": "2026-05-23T05:39:14.053Z"
+    },
+    {
+      "id": "65757813-66e4-4bad-aa0e-86e91da3af7c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: USB charger",
+      "read": false,
+      "createdAt": "2026-06-03T01:17:09.526Z"
+    },
+    {
+      "id": "a84fd9be-e8cf-4a03-9416-1d2d98f982f5",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: Samsung A03 Core",
+      "read": false,
+      "createdAt": "2026-06-03T01:21:05.341Z"
+    },
+    {
+      "id": "b3fc428d-ca5c-4727-a541-f1836100e925",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: Airpod",
+      "read": false,
+      "createdAt": "2026-06-03T01:39:48.331Z"
+    },
+    {
+      "id": "24904f76-8fdd-47b7-9f67-677226dabb76",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: Itel",
+      "read": false,
+      "createdAt": "2026-06-03T01:41:28.911Z"
+    },
+    {
+      "id": "b2fdb55d-7237-48a3-8980-3f168a1658c9",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: Headset",
+      "read": false,
+      "createdAt": "2026-06-03T01:42:55.891Z"
+    },
+    {
+      "id": "b507b661-dd3a-44f5-9c42-fd534411ad0f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: Infinix Hot 8 Screen Saver",
+      "read": false,
+      "createdAt": "2026-06-03T01:44:43.553Z"
+    },
+    {
+      "id": "6c22e4ae-a28d-4f9b-ba70-a077feb85c4a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: Infinix Hot 8 Screen Saver",
+      "read": false,
+      "createdAt": "2026-06-03T01:48:25.422Z"
+    },
+    {
+      "id": "94acd037-45c9-47c3-9fa4-328f465e407e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: USB charger",
+      "read": false,
+      "createdAt": "2026-06-03T01:49:14.856Z"
+    },
+    {
+      "id": "324a6a94-eff4-40d8-80bc-43ed2da7e8b8",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: Samsung A03 Core",
+      "read": false,
+      "createdAt": "2026-06-03T01:50:49.109Z"
+    },
+    {
+      "id": "445139f4-c9ab-48ac-8192-88d586ce1ea9",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: Itel",
+      "read": false,
+      "createdAt": "2026-06-03T01:51:32.875Z"
+    },
+    {
+      "id": "a9a35b84-8c26-4c5b-ba4f-08357845c6d7",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: Infinix Hot 8 Screen Saver",
+      "read": false,
+      "createdAt": "2026-06-03T01:51:57.785Z"
+    },
+    {
+      "id": "df2e45f3-88f8-4a4c-831a-baf6b86b8106",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: Airpod",
+      "read": false,
+      "createdAt": "2026-06-03T01:52:43.005Z"
+    },
+    {
+      "id": "ddfc34a9-f700-4ae0-b078-8266bcd018b0",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: USB charger",
+      "read": false,
+      "createdAt": "2026-06-03T01:58:37.169Z"
+    },
+    {
+      "id": "ce056d03-b520-4015-ab3b-62ffba76f306",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: USB charger",
+      "read": false,
+      "createdAt": "2026-06-03T01:59:37.044Z"
+    },
+    {
+      "id": "422770b5-f993-44fd-963e-fcdcf2e81d92",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: USB charger",
+      "read": false,
+      "createdAt": "2026-06-03T02:02:58.551Z"
+    },
+    {
+      "id": "0e4b9c47-04b1-43bc-afca-7e3d7219d24a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager updated stock: USB charger",
+      "read": false,
+      "createdAt": "2026-06-03T02:03:31.934Z"
+    },
+    {
+      "id": "b42b68ee-960c-4235-9e77-c10d6eefbf5e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "message": "Manager added stock: USB charger",
+      "read": false,
+      "createdAt": "2026-06-03T02:04:48.799Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "b3422cf3-b90c-4138-9dd7-c95f20ddfac8",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "System seeded demo inventory",
+      "createdAt": "2026-05-23T01:31:02.415Z"
+    },
+    {
+      "id": "ec491700-e61f-4438-a3f1-d79a3d36f82c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T01:31:10.823Z"
+    },
+    {
+      "id": "98e3f0f5-d9a6-44d7-b900-bd2b89d557c2",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T01:33:48.875Z"
+    },
+    {
+      "id": "d399f8db-3742-4d6e-a549-11040f7735a1",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T01:34:44.310Z"
+    },
+    {
+      "id": "e75e5583-541e-4d60-8864-fe6f16cdb2f0",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T01:35:28.902Z"
+    },
+    {
+      "id": "129ca880-ab24-4c08-8d86-d2ba935e244e",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T01:35:45.753Z"
+    },
+    {
+      "id": "bb05e5ff-ca8e-42df-b2fb-f56ea5c27819",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB-C Test Cable",
+      "createdAt": "2026-05-23T01:37:04.677Z"
+    },
+    {
+      "id": "512103ca-8205-4edc-b1d7-888e03bf3bb9",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T01:37:07.043Z"
+    },
+    {
+      "id": "c36b9b0b-ed84-46bd-95e2-cf82048a4809",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T01:37:17.275Z"
+    },
+    {
+      "id": "03c4f8b6-1727-439a-a21e-0ebc1a373b3b",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Deleted stock item: USB-C Test Cable",
+      "createdAt": "2026-05-23T01:37:17.333Z"
+    },
+    {
+      "id": "34259cec-ced5-44a5-b396-68dbd4eaecd3",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:33.316Z"
+    },
+    {
+      "id": "70008f3a-74b4-4617-9cc2-ac1bb576f899",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:34.977Z"
+    },
+    {
+      "id": "6c2ac87c-71a5-4701-b454-2344f32c5836",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:36.481Z"
+    },
+    {
+      "id": "d4ac6296-a9c4-4aa7-8547-51e425f22d20",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:37.293Z"
+    },
+    {
+      "id": "d2940e19-733d-4b0f-8a52-0e4b9eb660aa",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:37.469Z"
+    },
+    {
+      "id": "748216e2-aa6c-4eac-96f0-6cafdad8c810",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:38.413Z"
+    },
+    {
+      "id": "cb87e6a1-5488-44c7-9a81-ef05d605d9bb",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:38.601Z"
+    },
+    {
+      "id": "e0c7c64b-39b6-4a17-aa6b-7d90fff9531c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:39.018Z"
+    },
+    {
+      "id": "402f086b-2617-41ee-aaf3-341e63c6c7f2",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:39.117Z"
+    },
+    {
+      "id": "d648aee9-0e94-4b28-a728-a26601e89963",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:39.382Z"
+    },
+    {
+      "id": "946c97e0-79c9-45f2-b60a-7a1d1dccc392",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:40.215Z"
+    },
+    {
+      "id": "92150e41-e45a-45f0-bf9c-0cc4aac03776",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:40.282Z"
+    },
+    {
+      "id": "3e3b4279-c75c-4c49-a1ca-369de677f1eb",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:40.535Z"
+    },
+    {
+      "id": "0830d130-8d1d-449f-ba3e-b6f9b9e69d8c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:42.007Z"
+    },
+    {
+      "id": "35484088-a82d-4982-9986-8c6b94cf1946",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:42.196Z"
+    },
+    {
+      "id": "e0ebf741-c7fa-41ba-a88c-245b483adc61",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:43.050Z"
+    },
+    {
+      "id": "4a2b4d2b-1cce-4c4d-ad7d-25f9b3ee5d2c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:43.242Z"
+    },
+    {
+      "id": "dcdd135a-dca8-4b66-a3a1-0756d965a14b",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:44.235Z"
+    },
+    {
+      "id": "8258b95b-d7c3-4314-93fa-c5440fcffcec",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:44.419Z"
+    },
+    {
+      "id": "6201f7a7-9566-4c4c-a781-9734861731f8",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:44.720Z"
+    },
+    {
+      "id": "8ad66249-4328-4cd2-aff8-dd9d90112595",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:44.818Z"
+    },
+    {
+      "id": "b7cb4d73-1fb0-4dd5-82fe-1c56e63682dc",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:44.990Z"
+    },
+    {
+      "id": "85ab75a0-7156-4f0a-8250-66d80c6013a8",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:45.259Z"
+    },
+    {
+      "id": "78e8e4d6-a3d6-440a-9647-49bd9b835990",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:47.668Z"
+    },
+    {
+      "id": "b7425464-a92d-47fa-b72b-a3f8942d1654",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:47.851Z"
+    },
+    {
+      "id": "894d1021-d498-478f-9101-6a6b333c2018",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:48.313Z"
+    },
+    {
+      "id": "b70b9d72-deff-42e6-a456-69ca2772ccc4",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:48.479Z"
+    },
+    {
+      "id": "15fab37a-8ed4-46ea-9a51-3e119ebe647c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:49.211Z"
+    },
+    {
+      "id": "1abf12d1-eb24-46c4-ad42-98fd5dc3e48a",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:49.388Z"
+    },
+    {
+      "id": "fa9120f5-92b5-4d18-9ef7-3e223428b316",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:49.663Z"
+    },
+    {
+      "id": "a44ac6e2-4626-4cbd-b756-b5c784f5ac12",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:49.806Z"
+    },
+    {
+      "id": "1cb73fee-32f2-4082-8283-d04f32723b09",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:50.058Z"
+    },
+    {
+      "id": "5610993a-b2eb-4ed3-aee4-17829320194c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:50.734Z"
+    },
+    {
+      "id": "2cb7036a-c7d0-459a-a7d1-65b05d0211a4",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:51.162Z"
+    },
+    {
+      "id": "1ebfa844-2e29-4b63-bf48-2fdfe8904a19",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:43:51.349Z"
+    },
+    {
+      "id": "2cac81d3-5f3d-4d33-a78d-4e5534acdb40",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:10.983Z"
+    },
+    {
+      "id": "5db2ac82-7b9c-48fb-a275-bf9f8a24713c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:11.103Z"
+    },
+    {
+      "id": "022b6506-ccec-4beb-b7b3-b2efc2e48e3b",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:11.260Z"
+    },
+    {
+      "id": "3c3dd756-9290-41f4-b6c5-4566f2088806",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:11.394Z"
+    },
+    {
+      "id": "75650448-5406-40f4-8d21-fbfdf97295c4",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:11.691Z"
+    },
+    {
+      "id": "d4b6687e-8a1d-43b6-886f-666a5e8d605c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:12.116Z"
+    },
+    {
+      "id": "bd6d5a88-099f-44c9-a663-8a7fe8a68021",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:12.220Z"
+    },
+    {
+      "id": "d52ef833-e608-4ac3-8c85-b38f15619e28",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:12.493Z"
+    },
+    {
+      "id": "6f1fba0a-1f54-48cb-b374-1532639c83aa",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:13.291Z"
+    },
+    {
+      "id": "903c3d73-60fc-4247-b0c9-2c02dbbc5680",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:13.472Z"
+    },
+    {
+      "id": "d420d4fd-b72b-4a15-be11-eb7e055466e4",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:20.431Z"
+    },
+    {
+      "id": "ca6e0c42-b6f0-4884-beed-1b3e079a463a",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:21.250Z"
+    },
+    {
+      "id": "93b0ca17-7dc8-4833-8ddc-7f9131203c6b",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:21.433Z"
+    },
+    {
+      "id": "31078779-d99a-42a8-b780-b53ecfa3df42",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:21.688Z"
+    },
+    {
+      "id": "7b30e0cb-a337-4ab8-a5ea-205935aa0c02",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:22.159Z"
+    },
+    {
+      "id": "7c23e052-125e-4546-ad13-14d04f7da1eb",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:22.352Z"
+    },
+    {
+      "id": "9493167e-7f7e-4e1f-9d34-bd07670694d2",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:23.038Z"
+    },
+    {
+      "id": "c4e9027f-b0fb-434f-a534-4cc1958473e4",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:23.154Z"
+    },
+    {
+      "id": "330415df-2afc-4b85-aa82-ead7cf9dd3c0",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:23.392Z"
+    },
+    {
+      "id": "6e47dfaa-2bdb-4da1-a61a-38b6b9d053a3",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:23.657Z"
+    },
+    {
+      "id": "5665fb7b-9040-420a-a6ec-3f4f3e733341",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:24.026Z"
+    },
+    {
+      "id": "9cc9a5e7-8d02-4857-9da9-a832336a9476",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:24.177Z"
+    },
+    {
+      "id": "a2945e01-9e30-4798-a3f8-f938b977b5b9",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:24.382Z"
+    },
+    {
+      "id": "885e7648-d82b-4d39-b0c2-f230ed8be8f0",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:24.632Z"
+    },
+    {
+      "id": "3e45646a-0ff1-44b3-a3af-c25046cbd546",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:29.660Z"
+    },
+    {
+      "id": "081a7636-710a-436b-b0b7-7c02b69669a9",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:30.686Z"
+    },
+    {
+      "id": "c439c62f-10ec-4866-af09-88c757b1f508",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:38.043Z"
+    },
+    {
+      "id": "e2f5a9ee-ebc2-4864-b7af-df4f1dc8ccd1",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:38.793Z"
+    },
+    {
+      "id": "7c096073-e76e-4850-960e-88221eee65f0",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:39.481Z"
+    },
+    {
+      "id": "ff29b3c5-5e0c-4c2b-aedc-ff52dc0ef94a",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T01:44:39.914Z"
+    },
+    {
+      "id": "3dbd1cf5-fbc2-4402-8eea-fbcef0db2200",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:11.733Z"
+    },
+    {
+      "id": "a1619659-731c-4173-a82e-1fa99c4a6e05",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:13.142Z"
+    },
+    {
+      "id": "c3c0eff3-cd3d-4f40-bc18-4751a3c06b82",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:14.102Z"
+    },
+    {
+      "id": "6307477f-3164-4ced-81b4-cde7b60475dc",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:14.710Z"
+    },
+    {
+      "id": "6b065887-93ac-45f4-95af-cd448590c5f3",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:14.870Z"
+    },
+    {
+      "id": "9bd4662e-a580-49a3-95a7-869e5bc93981",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:15.056Z"
+    },
+    {
+      "id": "74cde7b6-f2f9-49ee-8ad3-3d0cedea114b",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:15.329Z"
+    },
+    {
+      "id": "a2c9779d-91f3-4ca7-9dc7-4321ad2cb6ea",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:16.321Z"
+    },
+    {
+      "id": "8af92019-9932-4897-8e28-d1ff4385db7c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:16.513Z"
+    },
+    {
+      "id": "688564e4-bcaf-40c9-b9c7-74c6e7c3ce36",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:16.922Z"
+    },
+    {
+      "id": "576b5bba-def2-4ab4-ab9a-b6c1892c0407",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB Charger",
+      "createdAt": "2026-05-23T01:46:49.866Z"
+    },
+    {
+      "id": "a5b35d7a-c15d-44ff-bbac-d2b4eca8a2c6",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Deleted stock item: Nokia 105",
+      "createdAt": "2026-05-23T01:47:28.617Z"
+    },
+    {
+      "id": "cb61cc50-56d2-4cb7-be16-82d37615f8c2",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T02:43:42.082Z"
+    },
+    {
+      "id": "868040e2-9af4-4a92-81f6-ec7748acd13e",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T02:44:32.918Z"
+    },
+    {
+      "id": "5cd7d984-f1b1-4879-ba2d-6b64de8ea25c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T02:44:33.065Z"
+    },
+    {
+      "id": "d25fa350-0860-427f-8fe3-bcaecbb795a5",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T02:44:34.701Z"
+    },
+    {
+      "id": "a1ab7c47-db4d-4474-8510-e4944e8a9b29",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T02:44:36.806Z"
+    },
+    {
+      "id": "c3553d90-b292-48fb-a12b-2669d335f6e7",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T02:45:15.116Z"
+    },
+    {
+      "id": "24816a9e-0910-47ec-81ec-f7b58f744dd8",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-05-23T02:49:01.097Z"
+    },
+    {
+      "id": "caa32cca-f717-402e-b097-4ec316d4d7c3",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "df2ba31f-32ee-4e2d-96b6-eadf6fd96eb5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T02:50:39.840Z"
+    },
+    {
+      "id": "3d59c7dc-764c-4856-9f72-91c93966358c",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "df2ba31f-32ee-4e2d-96b6-eadf6fd96eb5",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-05-23T02:51:27.997Z"
+    },
+    {
+      "id": "1e0d79ff-db06-458e-a6e9-18e0d16c638f",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T02:51:46.597Z"
+    },
+    {
+      "id": "f5d792d1-2648-42f6-a15c-f9ba69bddf25",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Registered business account",
+      "createdAt": "2026-05-23T02:55:40.685Z"
+    },
+    {
+      "id": "8c58695d-6a2a-486d-93a7-582800fe9bbd",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T02:56:11.098Z"
+    },
+    {
+      "id": "31416356-d8b0-45fb-a6c2-291587cd4673",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-05-23T02:57:07.101Z"
+    },
+    {
+      "id": "f33dd504-19b1-4867-ad73-e8cba3c9a6cd",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: USB charger",
+      "createdAt": "2026-05-23T02:57:20.712Z"
+    },
+    {
+      "id": "4efb84f0-69e5-4e3b-8dcd-6f47f002ce88",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-05-23T02:57:54.174Z"
+    },
+    {
+      "id": "c952277c-a522-4a7f-8ceb-d0868d2bbb9e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-05-23T02:58:07.249Z"
+    },
+    {
+      "id": "845a2b37-9e68-432c-bbff-db5c655c7786",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Added stock item: Samsung A03 Core",
+      "createdAt": "2026-05-23T02:59:03.205Z"
+    },
+    {
+      "id": "e1e93ffb-7631-4edb-8296-43330b071d5d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T03:00:42.203Z"
+    },
+    {
+      "id": "a842e5b3-9fe6-47eb-a579-f4ee1af73ce7",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T03:07:49.569Z"
+    },
+    {
+      "id": "4589cb4a-bcde-4fea-bf64-2e7193640674",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T03:08:09.412Z"
+    },
+    {
+      "id": "63ff8fbc-1d5b-404c-ac54-125ad726c98a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T04:37:37.043Z"
+    },
+    {
+      "id": "ec65ed7c-4db0-4a30-b022-fc72cd6f445b",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Requested password reset",
+      "createdAt": "2026-05-23T04:39:29.098Z"
+    },
+    {
+      "id": "9c903203-9f30-4ee0-9f3c-2d818c96121d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Requested password reset",
+      "createdAt": "2026-05-23T04:40:56.223Z"
+    },
+    {
+      "id": "27e9cb9d-4074-4f2b-9a7c-512a35d73467",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Reset password",
+      "createdAt": "2026-05-23T04:41:19.754Z"
+    },
+    {
+      "id": "92ac2041-a231-4b95-aa09-7eeb9c5d1e6a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T04:41:36.980Z"
+    },
+    {
+      "id": "c1d7b84c-0937-4cac-b011-a3c17c428a2b",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T04:43:11.018Z"
+    },
+    {
+      "id": "5a882c5d-3698-46d4-9742-e6f22c475fc0",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T04:56:45.705Z"
+    },
+    {
+      "id": "514df4d1-d446-492f-8d45-5231c3b15466",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Created Manager user: DAMOAH PORTIA",
+      "createdAt": "2026-05-23T04:57:16.910Z"
+    },
+    {
+      "id": "01105180-6653-481a-aceb-673d6773cc0d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T04:57:41.620Z"
+    },
+    {
+      "id": "d376835a-7e9f-42d3-a32c-4554c154bde3",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: airpod",
+      "createdAt": "2026-05-23T04:59:05.071Z"
+    },
+    {
+      "id": "f8803ea2-de79-4271-aedf-ec4fe9fca320",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:01:20.970Z"
+    },
+    {
+      "id": "219de0a0-ccf3-497a-85bd-0450ee9a33f8",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:16:46.746Z"
+    },
+    {
+      "id": "00eb9ca6-e91c-4d87-96f1-4a3f9333e012",
+      "businessId": "1e397557-4ceb-4129-bd66-8d4a2c7b129d",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:19:53.642Z"
+    },
+    {
+      "id": "32720086-9125-4ee4-b66e-3a750b5b80b9",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:22:24.669Z"
+    },
+    {
+      "id": "557fc4b3-ae68-4136-b444-29559fcf29bd",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: Itel Phone",
+      "createdAt": "2026-05-23T05:24:25.487Z"
+    },
+    {
+      "id": "d6ad5d68-5a48-44b7-86a8-eea84919ec17",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:27:22.505Z"
+    },
+    {
+      "id": "7b2e293e-0668-4b47-bb82-ade254e9ac6d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:30:01.444Z"
+    },
+    {
+      "id": "eec5fa0f-8a83-4811-9132-503800d82c01",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:32:30.380Z"
+    },
+    {
+      "id": "b47d5282-e295-45c5-984f-fa658947b92e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T05:33:09.443Z"
+    },
+    {
+      "id": "8825670b-c3c1-4864-9b59-069d113befc4",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:33:48.501Z"
+    },
+    {
+      "id": "3e58f4cd-81ff-43ae-ae3b-e42e997038c2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: cell battery",
+      "createdAt": "2026-05-23T05:35:24.588Z"
+    },
+    {
+      "id": "2c9ca8a7-601e-44e1-84bd-26d214a30dc4",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:36:41.533Z"
+    },
+    {
+      "id": "2b358c4e-3c12-4af9-845d-4f4e35127237",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T05:37:20.221Z"
+    },
+    {
+      "id": "976c489d-fcd6-41ac-9858-7d69ba53701a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:38:08.392Z"
+    },
+    {
+      "id": "da934254-1b69-488f-b0fc-bcaa3c267ded",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: airpod",
+      "createdAt": "2026-05-23T05:39:14.053Z"
+    },
+    {
+      "id": "ef335b3d-5139-408c-a047-ede698a43747",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:40:34.154Z"
+    },
+    {
+      "id": "4a483cee-aaa2-43ec-875f-7e0050939c02",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T05:44:12.597Z"
+    },
+    {
+      "id": "a17b3919-c1db-4d2e-826a-70014487820f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T10:54:45.777Z"
+    },
+    {
+      "id": "510dca4b-186f-479f-9fda-f553bc4b526b",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-05-23T10:56:50.326Z"
+    },
+    {
+      "id": "7e9f9c67-7f00-4214-8b93-b5859e0cd81e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T10:57:50.884Z"
+    },
+    {
+      "id": "8858d98a-667e-44dd-a7aa-6aaba86d8320",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T11:06:45.968Z"
+    },
+    {
+      "id": "70675b69-cb11-4d48-a55a-33c0b80b3a83",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T11:07:06.121Z"
+    },
+    {
+      "id": "b58eeafa-117b-4e90-9a29-b6ab2ee6ff4a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T11:13:24.956Z"
+    },
+    {
+      "id": "cc0abff9-06b0-4d05-8f2d-0bb168aeded5",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T11:13:26.990Z"
+    },
+    {
+      "id": "cdc260d9-6903-4955-8dff-1d4b7ef29121",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T11:13:28.739Z"
+    },
+    {
+      "id": "efe866d4-538d-4e49-b382-792a557185c3",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T11:13:31.504Z"
+    },
+    {
+      "id": "b057083a-8482-411a-b11a-0a4d87146432",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-23T20:05:01.264Z"
+    },
+    {
+      "id": "d31cd5bb-9020-4509-b7b7-d9c85c0037a4",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T20:05:11.733Z"
+    },
+    {
+      "id": "2983d118-cd22-4ab4-8d0c-b9deb5d52774",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-23T20:05:22.849Z"
+    },
+    {
+      "id": "0c90dd0e-3550-497f-8eb3-19e0c35fde42",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-26T21:54:29.799Z"
+    },
+    {
+      "id": "a11162a5-4842-49e7-852b-49aced858e5b",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T21:54:38.377Z"
+    },
+    {
+      "id": "e02a00a9-7060-4718-9758-dc38dc3b6cc3",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T21:54:41.107Z"
+    },
+    {
+      "id": "63229e94-6ab8-494e-b6fa-b37312733986",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T21:54:41.335Z"
+    },
+    {
+      "id": "780caf32-8fb8-4e7e-a036-5e24eefda41c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T21:54:43.992Z"
+    },
+    {
+      "id": "731bca71-b645-48ee-a340-0944809e4203",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T21:54:52.232Z"
+    },
+    {
+      "id": "502334aa-439b-47d3-a553-c03c51e38f46",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T21:54:56.071Z"
+    },
+    {
+      "id": "1c684a3d-88c5-47e1-910b-395b71cf502c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T21:55:00.116Z"
+    },
+    {
+      "id": "cb78a6f0-2972-49d2-8cc9-9fdd1423cb99",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T21:58:41.488Z"
+    },
+    {
+      "id": "eb1cc984-ad54-4c68-9d1a-5383eda8be86",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-26T23:46:57.060Z"
+    },
+    {
+      "id": "a30ebf19-3fc0-4a95-8037-d3c36a9bb431",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-05-26T23:48:59.012Z"
+    },
+    {
+      "id": "4cb87d5d-6389-41be-9d44-69ca652f1819",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-26T23:51:29.020Z"
+    },
+    {
+      "id": "7099634f-d9ef-4a2a-bd72-fe57df314ba0",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: battery",
+      "createdAt": "2026-05-27T00:09:34.370Z"
+    },
+    {
+      "id": "26976438-4a61-48fe-b5c3-7b5d90be4eb5",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-05-27T00:11:39.152Z"
+    },
+    {
+      "id": "d47483f3-32c3-4532-acff-e726a9ac11f1",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-05-27T00:17:59.117Z"
+    },
+    {
+      "id": "f391636e-3978-4694-9916-38e796c8aeb5",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-27T00:22:14.192Z"
+    },
+    {
+      "id": "4329495e-c1ea-4971-9d6a-ad92498ed0f1",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-27T00:22:16.778Z"
+    },
+    {
+      "id": "da5a8b65-b597-497f-aa9c-2753bcfb9172",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-27T00:22:18.247Z"
+    },
+    {
+      "id": "116b36da-1eb7-4c62-8f07-f6d253d46f5d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated system settings",
+      "createdAt": "2026-05-27T00:22:19.734Z"
+    },
+    {
+      "id": "ecdffa19-7140-4cf1-98ef-8295dd45a56b",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-06-02T13:17:14.788Z"
+    },
+    {
+      "id": "6bc2ce69-f500-417e-92dd-a69eec4b3778",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: battery",
+      "createdAt": "2026-06-02T13:36:26.938Z"
+    },
+    {
+      "id": "82f2633c-5ca9-414f-a749-1a994e4aa3bb",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-02T13:36:26.987Z"
+    },
+    {
+      "id": "8f1ca07b-651a-4dd5-9d5a-579f05d3cb1f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-02T13:36:27.013Z"
+    },
+    {
+      "id": "a05b87fc-a687-4640-9ee5-15ab0c1299f2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: battery",
+      "createdAt": "2026-06-02T13:37:24.312Z"
+    },
+    {
+      "id": "f1c1f935-5861-4462-8a54-9f9f7511345d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: airpod",
+      "createdAt": "2026-06-02T13:38:38.486Z"
+    },
+    {
+      "id": "23fc7335-a690-4b31-a58e-4f3c47c4821c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-02T13:39:12.185Z"
+    },
+    {
+      "id": "baa71692-831a-4fc8-b496-0148ec5b6614",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-02T13:39:34.505Z"
+    },
+    {
+      "id": "b4abe529-ebed-48f9-ae80-9f550d989566",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: Samsung A03 Core",
+      "createdAt": "2026-06-02T13:40:05.469Z"
+    },
+    {
+      "id": "ef9aaa1a-a544-4f26-a352-b0fe4f35a051",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: Itel Phone",
+      "createdAt": "2026-06-02T13:40:30.341Z"
+    },
+    {
+      "id": "e2071dde-8384-41f3-8366-7382dbacbc13",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-02T13:46:24.862Z"
+    },
+    {
+      "id": "ae34f5f0-40a9-423b-a80d-70333fb72ce8",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-02T13:48:12.512Z"
+    },
+    {
+      "id": "41552949-a904-40bd-94b2-007758108a19",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-02T13:48:50.774Z"
+    },
+    {
+      "id": "968936ae-0173-4c72-b671-18d1365c3b7d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Updated system settings",
+      "createdAt": "2026-06-03T01:10:39.245Z"
+    },
+    {
+      "id": "30aec440-757a-41d1-86a7-2c3bf565502f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: airpod",
+      "createdAt": "2026-06-03T01:11:16.854Z"
+    },
+    {
+      "id": "f70660f8-63a8-44d3-bcdc-3688ab36446d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: USB charger",
+      "createdAt": "2026-06-03T01:11:26.058Z"
+    },
+    {
+      "id": "834a7484-ab1f-4033-ad0d-61fedd782078",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: USB charger",
+      "createdAt": "2026-06-03T01:11:37.244Z"
+    },
+    {
+      "id": "68e9934f-ebd7-48c6-bd22-9e6dc205329f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: USB charger",
+      "createdAt": "2026-06-03T01:11:49.004Z"
+    },
+    {
+      "id": "7b9d4601-3a2d-4ca8-b597-41e2c0465481",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: Samsung A03 Core",
+      "createdAt": "2026-06-03T01:11:56.312Z"
+    },
+    {
+      "id": "48f2007c-373f-4a26-a577-16c869d6991e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: Itel Phone",
+      "createdAt": "2026-06-03T01:12:02.754Z"
+    },
+    {
+      "id": "3dea350d-0a76-4887-8064-07078bc86844",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: cell battery",
+      "createdAt": "2026-06-03T01:12:15.768Z"
+    },
+    {
+      "id": "6db6e598-fb63-4a8a-a9fa-606b05e9c5da",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Deleted stock item: battery",
+      "createdAt": "2026-06-03T01:12:20.618Z"
+    },
+    {
+      "id": "87f0f8ec-95ce-441c-8fc5-92a43f3994ad",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-06-03T01:14:52.310Z"
+    },
+    {
+      "id": "6fed5bef-0eaf-4654-bd94-5cd89b9b2f05",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-06-03T01:17:09.526Z"
+    },
+    {
+      "id": "84c3f16d-f86f-456c-9139-deac977207e3",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: Samsung A03 Core",
+      "createdAt": "2026-06-03T01:21:05.341Z"
+    },
+    {
+      "id": "5253e4c8-6e46-4fed-ab9f-ffda2944d1b7",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Signed in",
+      "createdAt": "2026-06-03T01:32:13.871Z"
+    },
+    {
+      "id": "f1a4254b-cb67-4f1a-9830-1e5b808f05e2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: Airpod",
+      "createdAt": "2026-06-03T01:39:48.330Z"
+    },
+    {
+      "id": "ff862a20-94a7-4153-a95b-d6b00bf62801",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: Itel",
+      "createdAt": "2026-06-03T01:41:28.911Z"
+    },
+    {
+      "id": "548c3c98-0554-4872-94fd-78853982d9b8",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: Headset",
+      "createdAt": "2026-06-03T01:42:55.891Z"
+    },
+    {
+      "id": "7de9311d-7a07-48bf-9771-a5ebdb0dd40b",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: Infinix Hot 8 Screen Saver",
+      "createdAt": "2026-06-03T01:44:43.553Z"
+    },
+    {
+      "id": "58a7666a-858c-482a-a688-0aa5e043030e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: Infinix Hot 8 Screen Saver",
+      "createdAt": "2026-06-03T01:48:25.422Z"
+    },
+    {
+      "id": "d6159bdc-b6b3-42ae-bf00-42716ea56f15",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-03T01:49:14.856Z"
+    },
+    {
+      "id": "17d0823e-558c-42ac-b6c0-227c4efcb4af",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: Samsung A03 Core",
+      "createdAt": "2026-06-03T01:50:49.108Z"
+    },
+    {
+      "id": "3ca82a03-32d1-416b-9614-10a0615b2b17",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: Itel",
+      "createdAt": "2026-06-03T01:51:32.875Z"
+    },
+    {
+      "id": "5cf1ac42-e37c-4ef2-a728-a637a75f2fe3",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: Infinix Hot 8 Screen Saver",
+      "createdAt": "2026-06-03T01:51:57.785Z"
+    },
+    {
+      "id": "0165b587-6a1d-46d8-86cf-6e3cfd683d60",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: Airpod",
+      "createdAt": "2026-06-03T01:52:43.005Z"
+    },
+    {
+      "id": "cbfe25e2-ac07-4466-95c1-47c480914189",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-06-03T01:58:37.169Z"
+    },
+    {
+      "id": "9eff131f-dc07-4176-b1fe-9e98ebd6f215",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-03T01:59:37.044Z"
+    },
+    {
+      "id": "64723995-1ec1-42df-989a-87a80809ec2f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-03T02:02:58.551Z"
+    },
+    {
+      "id": "f05526d6-fcec-45c0-94d3-9cba8ceb995f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Updated stock item: USB charger",
+      "createdAt": "2026-06-03T02:03:31.934Z"
+    },
+    {
+      "id": "276859bc-e98b-47f4-a8e8-6d6ea9832cb8",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "action": "Added stock item: USB charger",
+      "createdAt": "2026-06-03T02:04:48.799Z"
+    },
+    {
+      "id": "2d4edb64-367e-4635-bb21-ca0be9f49296",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "action": "Signed in",
+      "createdAt": "2026-06-03T02:06:01.767Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "b305e455947a5ab0a3ca3b6eb75d89a7b418b1f239b0675e0d6617f4d698ada3",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T01:31:10.823Z",
+      "expiresAt": "2026-05-23T13:31:10.823Z"
+    },
+    {
+      "token": "d507ca2389856bc2ea24a3c169cac9e5b9bad25d5a98f6074d2b6f0ccfaf5601",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T01:33:48.875Z",
+      "expiresAt": "2026-05-23T13:33:48.875Z"
+    },
+    {
+      "token": "4f71ff5e518e6e2f394ca4bec680d24fc93bcd76413f5a1505d1d5d2166b39ad",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T01:34:44.310Z",
+      "expiresAt": "2026-05-23T13:34:44.310Z"
+    },
+    {
+      "token": "76213554888e62549177cdc901efdeb66670fc3752c11b496c69301e9babefaa",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T01:35:28.902Z",
+      "expiresAt": "2026-05-23T13:35:28.902Z"
+    },
+    {
+      "token": "39f5e8bb622dfbd2c31bc319442a035b0f2bbd2f8843d0aeae59e77905f759ec",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T01:35:45.752Z",
+      "expiresAt": "2026-05-23T13:35:45.752Z"
+    },
+    {
+      "token": "498c3ecc16974110d6254c01c05bdc59de9e9f30638cfa4ce9137347ea8ef9a5",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T01:37:07.042Z",
+      "expiresAt": "2026-05-23T13:37:07.042Z"
+    },
+    {
+      "token": "e62901ea5b0b94ec61c889156b31e6ae17c3cf1aa0a52bb09712ec0f8e91ffcb",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T01:37:17.275Z",
+      "expiresAt": "2026-05-23T13:37:17.275Z"
+    },
+    {
+      "token": "d7b0e42b081024bedc2e840b20b255397bf342d1d9509ae4a6af0fcae2117b71",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T02:43:42.080Z",
+      "expiresAt": "2026-05-23T14:43:42.080Z"
+    },
+    {
+      "token": "424387ca3efcf6e0d3398863eff9ebf5d12db56970400099302ca8c52b434a59",
+      "userId": "df2ba31f-32ee-4e2d-96b6-eadf6fd96eb5",
+      "createdAt": "2026-05-23T02:50:39.840Z",
+      "expiresAt": "2026-05-23T14:50:39.840Z"
+    },
+    {
+      "token": "33765e0889fb775070e47e4cd27502face0da0295ae1b2e045470889f9e59ab5",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T02:51:46.597Z",
+      "expiresAt": "2026-05-23T14:51:46.597Z"
+    },
+    {
+      "token": "b64ee7c5ae63c4eb6c8fe5473874d410efc9f41da2056aec82d5c26243a2f4f4",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T03:07:49.569Z",
+      "expiresAt": "2026-05-23T15:07:49.569Z"
+    },
+    {
+      "token": "508f52fc7c2845fa68a0a66c9f1d4aa3236dc57a977a37ebd005c87f51b16f98",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T04:41:36.980Z",
+      "expiresAt": "2026-05-23T16:41:36.980Z"
+    },
+    {
+      "token": "a38faa86d167c78f25e316794f000c589963f615d6de50b3369db92798394a6b",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T04:43:11.018Z",
+      "expiresAt": "2026-05-23T16:43:11.018Z"
+    },
+    {
+      "token": "e1bb142a9774db1486c56b6116d2c6cf52a410cc7ea34d40e7c3a75fe680f220",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T04:56:45.704Z",
+      "expiresAt": "2026-05-23T16:56:45.704Z"
+    },
+    {
+      "token": "4c6d88a7ae0317a6920a6bb7dbc425135613002b229d45dc37aad6ac0054878e",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-05-23T04:57:41.620Z",
+      "expiresAt": "2026-05-23T16:57:41.620Z"
+    },
+    {
+      "token": "a0475a367d5cbbe30bb09f034d747440b10034838c430a02edebf97d08251fdf",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T05:01:20.970Z",
+      "expiresAt": "2026-05-23T17:01:20.970Z"
+    },
+    {
+      "token": "7002062fa702b8c8b050db4d06217a6743c2441686fe3fff447079059c6ab52b",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T05:16:46.746Z",
+      "expiresAt": "2026-05-23T17:16:46.746Z"
+    },
+    {
+      "token": "f1edfd4bab92d95f38e19a6221e31bf9b9689887138f744140e5479b87421e86",
+      "userId": "fb4149cd-ba91-4a74-99f9-3fd4722c35b5",
+      "createdAt": "2026-05-23T05:19:53.637Z",
+      "expiresAt": "2026-05-23T17:19:53.640Z"
+    },
+    {
+      "token": "3f68c2aedc52d4ef933909211f53d65500fb81c271a6d77b3de4787e05fa4491",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-05-23T05:22:24.669Z",
+      "expiresAt": "2026-05-23T17:22:24.669Z"
+    },
+    {
+      "token": "1ed651a4942a638dd5bb4021380e843ad65b13dd63fe948cc6dc3d77a3d0bec9",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T05:27:22.505Z",
+      "expiresAt": "2026-05-23T17:27:22.505Z"
+    },
+    {
+      "token": "a4046129fb42d1e5cc485b04fe7c8ecd92d715dc840830845d84cdf65a734d78",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-05-23T05:30:01.444Z",
+      "expiresAt": "2026-05-23T17:30:01.444Z"
+    },
+    {
+      "token": "53902cc1f54c86f5749af05ec6cb3fdc411395ef55baed1eb07e2820151f9aa8",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T05:32:30.380Z",
+      "expiresAt": "2026-05-23T17:32:30.380Z"
+    },
+    {
+      "token": "4a24ba3005d2c03b7bf8a9edacd58e71eecfd91aeb3972029bf9cf78cf99ae14",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-05-23T05:33:48.501Z",
+      "expiresAt": "2026-05-23T17:33:48.501Z"
+    },
+    {
+      "token": "363cf98ecd9c92383f524ae18ea6ae842d3147b7a103e8dd2c5f70a14f217da7",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T05:36:41.533Z",
+      "expiresAt": "2026-05-23T17:36:41.533Z"
+    },
+    {
+      "token": "8d8884971e1e06429730e567ffb106a1902fc01283d4e7ebc779ad6c114b65a7",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-05-23T05:38:08.392Z",
+      "expiresAt": "2026-05-23T17:38:08.392Z"
+    },
+    {
+      "token": "f53ffa0323917b726f7afc05a08d71824aadfa5fa48214ed295e797b99001972",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T05:40:34.154Z",
+      "expiresAt": "2026-05-23T17:40:34.154Z"
+    },
+    {
+      "token": "b2d54a90cce247e4fafa0cf7093d3678ad44a0cb3d007a6de71b44b5130455e6",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T05:44:12.596Z",
+      "expiresAt": "2026-05-23T17:44:12.596Z"
+    },
+    {
+      "token": "dda3f01c51651ede136b2517170dcf195988f838c697d7d3d1c2a7e24287ab72",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T10:54:45.776Z",
+      "expiresAt": "2026-05-23T22:54:45.776Z"
+    },
+    {
+      "token": "6f8b2d22f4fb0ca9accf899cef57f6ad9b7592e42e13feece6278629c10f9b50",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-05-23T10:57:50.884Z",
+      "expiresAt": "2026-05-23T22:57:50.884Z"
+    },
+    {
+      "token": "b28a5ade1ce2724e94299ba74737aeb8788ae97d45e32d1a68b9b3d9c96b00df",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T11:06:45.968Z",
+      "expiresAt": "2026-05-23T23:06:45.968Z"
+    },
+    {
+      "token": "e8efd9400e892d03052a9e4da0738f9b14aa1b0d10defa41f0c04cba913a9c6e",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-23T20:05:01.263Z",
+      "expiresAt": "2026-05-24T08:05:01.263Z"
+    },
+    {
+      "token": "279e31ccc1b171d60fa875e05ee9fd2757589021d8da483c57afd5448d63aec2",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-26T21:54:29.797Z",
+      "expiresAt": "2026-05-27T09:54:29.797Z"
+    },
+    {
+      "token": "4e5cd85b47d549fe9d8148b6a507a4b166813fc429c5f40b1c605a70a2db60bb",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-26T23:46:57.057Z",
+      "expiresAt": "2026-05-27T11:46:57.057Z"
+    },
+    {
+      "token": "cf1d9278f3263d8893917d013366639ccb821e3bc8e8fd8d7402bb6dc4840a48",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-05-26T23:48:59.011Z",
+      "expiresAt": "2026-05-27T11:48:59.012Z"
+    },
+    {
+      "token": "b6cddfdf369949ca9bdfcb45466582b43961a468a9ff97518fb0fa4c20d007f8",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-05-27T00:17:59.117Z",
+      "expiresAt": "2026-05-27T12:17:59.117Z"
+    },
+    {
+      "token": "2230305aae79445e78169f803afac33c51373d7c778f042582d6d746e9d1e01f",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-06-02T13:17:14.788Z",
+      "expiresAt": "2026-06-03T01:17:14.788Z"
+    },
+    {
+      "token": "9c791011bd0ac37201a4c4335cb17f49d36782058238e496047ac908ef7684a5",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-06-03T01:14:52.309Z",
+      "expiresAt": "2026-06-03T13:14:52.309Z"
+    },
+    {
+      "token": "350052677acbb22fc62927b8b8414bdc00bf43b9e2504a3f8b00529a193e9136",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "createdAt": "2026-06-03T01:32:13.870Z",
+      "expiresAt": "2026-06-03T13:32:13.870Z"
+    },
+    {
+      "token": "a00a2d4fd8f1a26e708f6a111bd5bc15f32392c8d46ace421662d5af4f34d2e6",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "createdAt": "2026-06-03T02:06:01.767Z",
+      "expiresAt": "2026-06-03T14:06:01.767Z"
+    }
+  ],
+  "passwordResetTokens": [
+    {
+      "token": "10068ae347b817a50b0d6d4062d35306eb193d70",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "createdAt": "2026-05-23T04:40:56.223Z",
+      "expiresAt": "2026-05-23T05:10:56.223Z",
+      "usedAt": "2026-05-23T04:41:19.754Z"
+    }
+  ],
+  "notificationDeliveries": [
+    {
+      "id": "a9e82c77-2b9f-4acf-b18c-9fe21d0eb42c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "517b044a-cdb8-452a-9c06-f9571c7d5e0d",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-05-23T05:24:25.487Z"
+    },
+    {
+      "id": "1b482d75-72a9-4f13-932a-d30037d10f75",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "50a92449-564d-4abf-9d86-19e972deac0a",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-05-23T05:35:24.588Z"
+    },
+    {
+      "id": "579ff5c4-b755-490e-92fc-e16d67127af4",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "50a92449-564d-4abf-9d86-19e972deac0a",
+      "channel": "email",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "failed",
+      "createdAt": "2026-05-23T05:35:24.588Z"
+    },
+    {
+      "id": "844a7dea-2024-446c-a1d8-a3d472cf04b7",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "50a92449-564d-4abf-9d86-19e972deac0a",
+      "channel": "sms",
+      "destination": "not configured",
+      "status": "failed",
+      "createdAt": "2026-05-23T05:35:24.588Z"
+    },
+    {
+      "id": "3680ab9b-1e0d-47ab-97a7-42e822d3b6a2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "f090b895-5b1c-454d-b0da-1a658bb000a0",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-05-23T05:39:14.053Z"
+    },
+    {
+      "id": "3e6a34cb-28ab-4aca-b6a1-654c37b4864e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "f090b895-5b1c-454d-b0da-1a658bb000a0",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "failed",
+      "createdAt": "2026-05-23T05:39:14.053Z"
+    },
+    {
+      "id": "4bc25c8c-a493-40b8-bf6a-a454a1ba5ec1",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "f090b895-5b1c-454d-b0da-1a658bb000a0",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "failed",
+      "createdAt": "2026-05-23T05:39:14.053Z"
+    },
+    {
+      "id": "c76e82aa-15c2-4b09-af59-58a54654e2af",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "65757813-66e4-4bad-aa0e-86e91da3af7c",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:17:09.526Z"
+    },
+    {
+      "id": "f3a38f45-5be2-467e-b0fc-e2018de83d05",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "65757813-66e4-4bad-aa0e-86e91da3af7c",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:17:09.526Z"
+    },
+    {
+      "id": "e9d9a350-3f6b-4b45-9702-d72b8f17b2f6",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "65757813-66e4-4bad-aa0e-86e91da3af7c",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:17:09.526Z"
+    },
+    {
+      "id": "c809478c-b9d8-41ff-b264-654994c9305e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "a84fd9be-e8cf-4a03-9416-1d2d98f982f5",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:21:05.341Z"
+    },
+    {
+      "id": "653f35f1-d93d-4be2-b153-bbca0c325d1a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "a84fd9be-e8cf-4a03-9416-1d2d98f982f5",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:21:05.341Z"
+    },
+    {
+      "id": "a982607d-118f-4ead-9575-ae796cb8507a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "a84fd9be-e8cf-4a03-9416-1d2d98f982f5",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:21:05.341Z"
+    },
+    {
+      "id": "190ac881-0091-497b-81df-ee0521b1ef02",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b3fc428d-ca5c-4727-a541-f1836100e925",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:39:48.331Z"
+    },
+    {
+      "id": "0115bd7d-6d9d-4c39-b9f2-e7fa00662c25",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b3fc428d-ca5c-4727-a541-f1836100e925",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:39:48.331Z"
+    },
+    {
+      "id": "e3bcbdea-0d49-4c50-869c-91dadfade031",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b3fc428d-ca5c-4727-a541-f1836100e925",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:39:48.331Z"
+    },
+    {
+      "id": "39d3b8aa-1aac-49fe-a130-c5a6609f1325",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "24904f76-8fdd-47b7-9f67-677226dabb76",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:41:28.911Z"
+    },
+    {
+      "id": "884a2a88-dad1-4be5-bcab-de7ac5db78fb",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "24904f76-8fdd-47b7-9f67-677226dabb76",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:41:28.911Z"
+    },
+    {
+      "id": "895368f2-3a91-4de8-ba68-5009333f29aa",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "24904f76-8fdd-47b7-9f67-677226dabb76",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:41:28.911Z"
+    },
+    {
+      "id": "677b25a0-a65e-4197-8243-9a357c300646",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b2fdb55d-7237-48a3-8980-3f168a1658c9",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:42:55.892Z"
+    },
+    {
+      "id": "23c63eeb-4db2-4842-a614-e08711d8b710",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b2fdb55d-7237-48a3-8980-3f168a1658c9",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:42:55.892Z"
+    },
+    {
+      "id": "f54c285b-4f91-4a6b-96c7-3d0efbaf8fca",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b2fdb55d-7237-48a3-8980-3f168a1658c9",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:42:55.892Z"
+    },
+    {
+      "id": "3254ed43-1050-4a59-83aa-0f123e93c0e1",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b507b661-dd3a-44f5-9c42-fd534411ad0f",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:44:43.553Z"
+    },
+    {
+      "id": "8bc350db-6417-4b21-a802-197e9fd38ed3",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b507b661-dd3a-44f5-9c42-fd534411ad0f",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:44:43.553Z"
+    },
+    {
+      "id": "92affe00-6486-4f5a-9378-53ed9a559a8d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b507b661-dd3a-44f5-9c42-fd534411ad0f",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:44:43.553Z"
+    },
+    {
+      "id": "abe5d171-036d-4516-b29a-b168d5e1d612",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "6c22e4ae-a28d-4f9b-ba70-a077feb85c4a",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:48:25.422Z"
+    },
+    {
+      "id": "c74493a9-95b5-49e2-ada2-f34de3bd05a9",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "6c22e4ae-a28d-4f9b-ba70-a077feb85c4a",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:48:25.422Z"
+    },
+    {
+      "id": "81c0f549-6898-4679-b5aa-be611d2e86e2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "6c22e4ae-a28d-4f9b-ba70-a077feb85c4a",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:48:25.422Z"
+    },
+    {
+      "id": "8b42fb5b-e6bd-46a3-abca-ab8068ca5a28",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "94acd037-45c9-47c3-9fa4-328f465e407e",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:49:14.856Z"
+    },
+    {
+      "id": "793da728-3a3b-45bb-9067-9fa57b0f7184",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "94acd037-45c9-47c3-9fa4-328f465e407e",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:49:14.856Z"
+    },
+    {
+      "id": "41c44ec4-e190-419b-8c15-dd1f0ba58fb5",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "94acd037-45c9-47c3-9fa4-328f465e407e",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:49:14.856Z"
+    },
+    {
+      "id": "4c89b328-27ff-4ef1-b6cb-6af6e7606e21",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "324a6a94-eff4-40d8-80bc-43ed2da7e8b8",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:50:49.109Z"
+    },
+    {
+      "id": "2ec4f1fa-8220-4629-a11e-8427773d2647",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "324a6a94-eff4-40d8-80bc-43ed2da7e8b8",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:50:49.109Z"
+    },
+    {
+      "id": "b7c29aaf-6f51-4ed5-92d8-06ee6089026c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "324a6a94-eff4-40d8-80bc-43ed2da7e8b8",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:50:49.109Z"
+    },
+    {
+      "id": "7b14e753-1ab0-4cd5-bf55-5fe443649ae9",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "445139f4-c9ab-48ac-8192-88d586ce1ea9",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:51:32.875Z"
+    },
+    {
+      "id": "c2ee2236-2912-4df6-baf5-841cacff9a39",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "445139f4-c9ab-48ac-8192-88d586ce1ea9",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:51:32.875Z"
+    },
+    {
+      "id": "752828b6-6f90-45e1-9f1a-89c131773f08",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "445139f4-c9ab-48ac-8192-88d586ce1ea9",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:51:32.875Z"
+    },
+    {
+      "id": "76edb3d4-86bf-492b-befb-7d288d52ee19",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "a9a35b84-8c26-4c5b-ba4f-08357845c6d7",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:51:57.785Z"
+    },
+    {
+      "id": "456c3f40-eb17-4cca-9886-4d6e18d3ac0c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "a9a35b84-8c26-4c5b-ba4f-08357845c6d7",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:51:57.785Z"
+    },
+    {
+      "id": "e3248d31-e705-4880-94a9-d3a733eb126a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "a9a35b84-8c26-4c5b-ba4f-08357845c6d7",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:51:57.785Z"
+    },
+    {
+      "id": "a7daa3cb-0924-4afc-b421-34e78b8272f8",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "df2e45f3-88f8-4a4c-831a-baf6b86b8106",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:52:43.005Z"
+    },
+    {
+      "id": "d5c96403-5a96-43c7-8144-8e7b0f4185a7",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "df2e45f3-88f8-4a4c-831a-baf6b86b8106",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:52:43.005Z"
+    },
+    {
+      "id": "b643ea74-34e2-4b0e-8991-ca36f825529e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "df2e45f3-88f8-4a4c-831a-baf6b86b8106",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:52:43.005Z"
+    },
+    {
+      "id": "2aad4661-3e48-46b0-bf89-95f538a60b30",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "ddfc34a9-f700-4ae0-b078-8266bcd018b0",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:58:37.169Z"
+    },
+    {
+      "id": "2d17463b-04d6-436b-87b1-b7e0cd106d1e",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "ddfc34a9-f700-4ae0-b078-8266bcd018b0",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:58:37.169Z"
+    },
+    {
+      "id": "8accea89-c2b1-4f73-b548-3361daa33f62",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "ddfc34a9-f700-4ae0-b078-8266bcd018b0",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:58:37.169Z"
+    },
+    {
+      "id": "4b6ae19f-4e57-4761-8461-33784ad8ec6c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "ce056d03-b520-4015-ab3b-62ffba76f306",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T01:59:37.044Z"
+    },
+    {
+      "id": "1fa5aa11-1c74-4230-b9a1-7b466ef482e9",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "ce056d03-b520-4015-ab3b-62ffba76f306",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:59:37.044Z"
+    },
+    {
+      "id": "5988854f-04b6-4f7d-874d-3a18749370d2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "ce056d03-b520-4015-ab3b-62ffba76f306",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T01:59:37.044Z"
+    },
+    {
+      "id": "b72d629c-9f6e-40a7-9998-47f9351e949c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "422770b5-f993-44fd-963e-fcdcf2e81d92",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T02:02:58.551Z"
+    },
+    {
+      "id": "1fe451c4-f0d5-4dea-9450-c5d3302550d7",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "422770b5-f993-44fd-963e-fcdcf2e81d92",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T02:02:58.551Z"
+    },
+    {
+      "id": "6be8df17-c4bb-4b5f-a026-8e12231f5f96",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "422770b5-f993-44fd-963e-fcdcf2e81d92",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T02:02:58.551Z"
+    },
+    {
+      "id": "6a061e15-beca-4aa4-8ac6-dd21f336cd71",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "0e4b9c47-04b1-43bc-afca-7e3d7219d24a",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T02:03:31.934Z"
+    },
+    {
+      "id": "7eef539e-be1e-43b1-83d3-2b319716cbd2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "0e4b9c47-04b1-43bc-afca-7e3d7219d24a",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T02:03:31.934Z"
+    },
+    {
+      "id": "dc9baf4d-1a20-460d-84b8-bbbc268ba5f9",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "0e4b9c47-04b1-43bc-afca-7e3d7219d24a",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T02:03:31.934Z"
+    },
+    {
+      "id": "332c3136-e1f7-47eb-b4a8-875bc60e0295",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b42b68ee-960c-4235-9e77-c10d6eefbf5e",
+      "channel": "in-app",
+      "destination": "ebenezeryeboahtakyi@gmail.com",
+      "status": "delivered",
+      "createdAt": "2026-06-03T02:04:48.799Z"
+    },
+    {
+      "id": "0fb92f19-a2b1-4874-961c-d3cfb6e3eaef",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b42b68ee-960c-4235-9e77-c10d6eefbf5e",
+      "channel": "email",
+      "destination": "portiadamoah@gmail.com",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T02:04:48.799Z"
+    },
+    {
+      "id": "c89cd0f7-ce16-4857-9106-8dc02368c52c",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "notificationId": "b42b68ee-960c-4235-9e77-c10d6eefbf5e",
+      "channel": "sms",
+      "destination": "0595270376",
+      "status": "provider_not_configured",
+      "createdAt": "2026-06-03T02:04:48.799Z"
+    }
+  ],
+  "stockHistory": [
+    {
+      "id": "3f8c6dee-2ed3-4290-be15-b0905f52dceb",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "fe15b61c-a728-4809-bba2-75c5e0df0e43",
+      "itemId": "758073f4-77f5-4e00-bbc3-8c32a781a10a",
+      "action": "before_edit",
+      "oldQuantity": 3,
+      "newQuantity": 3,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:36:26.938Z"
+    },
+    {
+      "id": "624ad107-fa15-41f6-a2bc-fc12798b5527",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "fe15b61c-a728-4809-bba2-75c5e0df0e43",
+      "itemId": "758073f4-77f5-4e00-bbc3-8c32a781a10a",
+      "action": "after_edit",
+      "oldQuantity": 3,
+      "newQuantity": 2,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:36:26.938Z"
+    },
+    {
+      "id": "5fd81ae3-14ba-4ab3-9c7b-ab2d21d412a2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "9c6b1c5e-27ae-453a-8dff-3496fcfcf303",
+      "action": "before_edit",
+      "oldQuantity": 8,
+      "newQuantity": 8,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:36:26.987Z"
+    },
+    {
+      "id": "48fabbde-6c38-48b8-b828-69a1b8b21838",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "9c6b1c5e-27ae-453a-8dff-3496fcfcf303",
+      "action": "after_edit",
+      "oldQuantity": 8,
+      "newQuantity": 5,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:36:26.987Z"
+    },
+    {
+      "id": "7e09fe90-c12e-4abc-a33c-6c9d2a06b8fa",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "9c6b1c5e-27ae-453a-8dff-3496fcfcf303",
+      "action": "before_edit",
+      "oldQuantity": 5,
+      "newQuantity": 5,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:36:27.013Z"
+    },
+    {
+      "id": "51fb2bd8-7711-4a3e-ab85-291220b5fb7f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "9c6b1c5e-27ae-453a-8dff-3496fcfcf303",
+      "action": "after_edit",
+      "oldQuantity": 5,
+      "newQuantity": 8,
+      "soldQuantity": 5,
+      "createdAt": "2026-06-02T13:36:27.013Z"
+    },
+    {
+      "id": "fe180566-b07c-4b3a-b60f-9575b8722044",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "fe15b61c-a728-4809-bba2-75c5e0df0e43",
+      "itemId": "758073f4-77f5-4e00-bbc3-8c32a781a10a",
+      "action": "before_edit",
+      "oldQuantity": 2,
+      "newQuantity": 2,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:37:24.312Z"
+    },
+    {
+      "id": "904a533e-00e3-432f-af6b-3b343db55ea2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "fe15b61c-a728-4809-bba2-75c5e0df0e43",
+      "itemId": "758073f4-77f5-4e00-bbc3-8c32a781a10a",
+      "action": "after_edit",
+      "oldQuantity": 2,
+      "newQuantity": 3,
+      "soldQuantity": 2,
+      "createdAt": "2026-06-02T13:37:24.312Z"
+    },
+    {
+      "id": "9a9c46f9-5e27-494c-933c-60bcf3ee99a6",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "43bafb65-41a4-420f-823a-3bc3cf8ae381",
+      "itemId": "4be62bf7-3aa0-4b52-845c-f2e98b42566b",
+      "action": "before_edit",
+      "oldQuantity": 4,
+      "newQuantity": 4,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:38:38.486Z"
+    },
+    {
+      "id": "48be0c5d-a363-4e8c-9ee4-ef434a52443a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "43bafb65-41a4-420f-823a-3bc3cf8ae381",
+      "itemId": "4be62bf7-3aa0-4b52-845c-f2e98b42566b",
+      "action": "after_edit",
+      "oldQuantity": 4,
+      "newQuantity": 4,
+      "soldQuantity": 3,
+      "createdAt": "2026-06-02T13:38:38.486Z"
+    },
+    {
+      "id": "d2b179e4-ce19-4db4-bff2-1ae41df02e91",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "9c6b1c5e-27ae-453a-8dff-3496fcfcf303",
+      "action": "before_edit",
+      "oldQuantity": 8,
+      "newQuantity": 8,
+      "soldQuantity": 5,
+      "createdAt": "2026-06-02T13:39:12.185Z"
+    },
+    {
+      "id": "9ec0a970-efca-403a-9672-cd53545076b1",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "9c6b1c5e-27ae-453a-8dff-3496fcfcf303",
+      "action": "after_edit",
+      "oldQuantity": 8,
+      "newQuantity": 8,
+      "soldQuantity": 5,
+      "createdAt": "2026-06-02T13:39:12.185Z"
+    },
+    {
+      "id": "24eab91c-8bfd-409c-9453-8dcfc9b84e81",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "8e283ff9-a96b-4dbc-9578-bc2fb42a2aec",
+      "action": "before_edit",
+      "oldQuantity": 3,
+      "newQuantity": 3,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:39:34.505Z"
+    },
+    {
+      "id": "a1f0d6b2-1636-4f01-bb91-bfd91e6f4aca",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "8e283ff9-a96b-4dbc-9578-bc2fb42a2aec",
+      "action": "after_edit",
+      "oldQuantity": 3,
+      "newQuantity": 3,
+      "soldQuantity": 3,
+      "createdAt": "2026-06-02T13:39:34.505Z"
+    },
+    {
+      "id": "de9ac5f8-0f1d-44f7-b334-6f23e374d817",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "itemId": "9e1f1555-54fa-4d38-b51f-d7cee5c9e085",
+      "action": "before_edit",
+      "oldQuantity": 1,
+      "newQuantity": 1,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:40:05.469Z"
+    },
+    {
+      "id": "fb05695f-a8fc-4873-914a-516ee3d94b51",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "itemId": "9e1f1555-54fa-4d38-b51f-d7cee5c9e085",
+      "action": "after_edit",
+      "oldQuantity": 1,
+      "newQuantity": 1,
+      "soldQuantity": 1,
+      "createdAt": "2026-06-02T13:40:05.469Z"
+    },
+    {
+      "id": "168b2d00-10c1-4153-8f6c-ef71c226f374",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "bc6181fc-a6e5-4dad-8825-d4dd9c62c9ad",
+      "itemId": "e9a284df-420a-407b-a59c-01142f10147e",
+      "action": "before_edit",
+      "oldQuantity": 20,
+      "newQuantity": 20,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:40:30.341Z"
+    },
+    {
+      "id": "2f330bbe-4ea8-4a56-a1f1-b42dc5378cb3",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "bc6181fc-a6e5-4dad-8825-d4dd9c62c9ad",
+      "itemId": "e9a284df-420a-407b-a59c-01142f10147e",
+      "action": "after_edit",
+      "oldQuantity": 20,
+      "newQuantity": 20,
+      "soldQuantity": 10,
+      "createdAt": "2026-06-02T13:40:30.341Z"
+    },
+    {
+      "id": "0f9fc072-40de-4b67-b057-90032219ddc4",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "itemId": "468fc227-ec11-4202-a222-ab57f30bae3c",
+      "action": "before_edit",
+      "oldQuantity": 5,
+      "newQuantity": 5,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:46:24.862Z"
+    },
+    {
+      "id": "40e953d5-848a-460f-a795-a634001a0ec7",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "468fc227-ec11-4202-a222-ab57f30bae3c",
+      "action": "after_edit",
+      "oldQuantity": 5,
+      "newQuantity": 5,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-02T13:46:24.862Z"
+    },
+    {
+      "id": "a86c294b-2760-41c5-9dc3-7f43c1e57802",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "9c6b1c5e-27ae-453a-8dff-3496fcfcf303",
+      "action": "before_edit",
+      "oldQuantity": 8,
+      "newQuantity": 8,
+      "soldQuantity": 5,
+      "createdAt": "2026-06-02T13:48:12.512Z"
+    },
+    {
+      "id": "4f69f628-e1a0-4392-8235-839284dbd9b6",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "9c6b1c5e-27ae-453a-8dff-3496fcfcf303",
+      "action": "after_edit",
+      "oldQuantity": 8,
+      "newQuantity": 8,
+      "soldQuantity": 5,
+      "createdAt": "2026-06-02T13:48:12.512Z"
+    },
+    {
+      "id": "a0660ece-d7e1-4415-9698-48af218c7572",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "1bbe26b3-e6bb-407f-aeea-13deaf1f6968",
+      "itemId": "8e283ff9-a96b-4dbc-9578-bc2fb42a2aec",
+      "action": "before_edit",
+      "oldQuantity": 3,
+      "newQuantity": 3,
+      "soldQuantity": 3,
+      "createdAt": "2026-06-02T13:48:50.774Z"
+    },
+    {
+      "id": "4d1dab85-e7ee-47e4-ad04-22d8689a70af",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "0f0cd183-b255-468b-8e98-614a0e5c040a",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "8e283ff9-a96b-4dbc-9578-bc2fb42a2aec",
+      "action": "after_edit",
+      "oldQuantity": 3,
+      "newQuantity": 3,
+      "soldQuantity": 3,
+      "createdAt": "2026-06-02T13:48:50.774Z"
+    },
+    {
+      "id": "d3bd0789-a89e-4733-846f-470d22184b72",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "0d748ca6-d796-4426-afac-73a8c7c742f4",
+      "action": "created",
+      "oldQuantity": 0,
+      "newQuantity": 5,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:17:09.526Z"
+    },
+    {
+      "id": "6e46e52f-81ac-4f2e-a461-19d004f0b566",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "itemId": "8d6aa4cb-35bc-492a-98e0-957be03d1ebe",
+      "action": "created",
+      "oldQuantity": 0,
+      "newQuantity": 2,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:21:05.341Z"
+    },
+    {
+      "id": "19a65c93-37b9-4751-94b3-1dc9837f979d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "43bafb65-41a4-420f-823a-3bc3cf8ae381",
+      "itemId": "8fdeb82b-f3f3-4264-bcfd-8e6bb2f40635",
+      "action": "created",
+      "oldQuantity": 0,
+      "newQuantity": 8,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:39:48.330Z"
+    },
+    {
+      "id": "0a2e944c-ea03-468d-a27b-5108ad672113",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "bc6181fc-a6e5-4dad-8825-d4dd9c62c9ad",
+      "itemId": "b4250ff7-114d-4b2d-9010-6989751ae8ab",
+      "action": "created",
+      "oldQuantity": 0,
+      "newQuantity": 5,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:41:28.911Z"
+    },
+    {
+      "id": "70dba93e-ebcd-476f-9a4a-9c5a7b6eceec",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "4071d677-81ce-4b6c-bcda-6e76ea17f160",
+      "itemId": "4aa1c23b-ce8d-4f78-a5e7-8c9fd413e01d",
+      "action": "created",
+      "oldQuantity": 0,
+      "newQuantity": 3,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:42:55.891Z"
+    },
+    {
+      "id": "9424fe57-9d71-4879-bc22-f318ad369c94",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "55fcf15e-9cf8-43aa-bc0a-8fd0f38f35ab",
+      "itemId": "d31dab79-da11-4ec7-a1a2-ebbae9dc9e72",
+      "action": "created",
+      "oldQuantity": 0,
+      "newQuantity": 30,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:44:43.553Z"
+    },
+    {
+      "id": "dab2c334-e48e-46c8-b709-21965a2e77fb",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "55fcf15e-9cf8-43aa-bc0a-8fd0f38f35ab",
+      "itemId": "d31dab79-da11-4ec7-a1a2-ebbae9dc9e72",
+      "action": "before_edit",
+      "oldQuantity": 30,
+      "newQuantity": 30,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:48:25.422Z"
+    },
+    {
+      "id": "6155bd17-6277-4ca3-afff-d744f431229b",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "55fcf15e-9cf8-43aa-bc0a-8fd0f38f35ab",
+      "itemId": "d31dab79-da11-4ec7-a1a2-ebbae9dc9e72",
+      "action": "after_edit",
+      "oldQuantity": 30,
+      "newQuantity": 30,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:48:25.422Z"
+    },
+    {
+      "id": "51d7edc4-797b-443d-b95e-374d2a6a3098",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "0d748ca6-d796-4426-afac-73a8c7c742f4",
+      "action": "before_edit",
+      "oldQuantity": 5,
+      "newQuantity": 5,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:49:14.856Z"
+    },
+    {
+      "id": "595a560a-6776-404d-b33c-df4fa0a7856d",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "0d748ca6-d796-4426-afac-73a8c7c742f4",
+      "action": "after_edit",
+      "oldQuantity": 5,
+      "newQuantity": 5,
+      "soldQuantity": 3,
+      "createdAt": "2026-06-03T01:49:14.856Z"
+    },
+    {
+      "id": "aa72deda-a803-48bf-ae9a-ccaf19f8936a",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "itemId": "8d6aa4cb-35bc-492a-98e0-957be03d1ebe",
+      "action": "before_edit",
+      "oldQuantity": 2,
+      "newQuantity": 2,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:50:49.108Z"
+    },
+    {
+      "id": "f7db0651-f876-43d2-8f1f-8df84adb71a2",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "itemId": "8d6aa4cb-35bc-492a-98e0-957be03d1ebe",
+      "action": "after_edit",
+      "oldQuantity": 2,
+      "newQuantity": 2,
+      "soldQuantity": 2,
+      "createdAt": "2026-06-03T01:50:49.108Z"
+    },
+    {
+      "id": "e78f5062-73a0-4319-b892-e5c73386fbcf",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "bc6181fc-a6e5-4dad-8825-d4dd9c62c9ad",
+      "itemId": "b4250ff7-114d-4b2d-9010-6989751ae8ab",
+      "action": "before_edit",
+      "oldQuantity": 5,
+      "newQuantity": 5,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:51:32.875Z"
+    },
+    {
+      "id": "3f949b9e-6e82-4de3-ae9e-3af4ff896b81",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "bc6181fc-a6e5-4dad-8825-d4dd9c62c9ad",
+      "itemId": "b4250ff7-114d-4b2d-9010-6989751ae8ab",
+      "action": "after_edit",
+      "oldQuantity": 5,
+      "newQuantity": 5,
+      "soldQuantity": 4,
+      "createdAt": "2026-06-03T01:51:32.875Z"
+    },
+    {
+      "id": "9a90491e-36f7-4abb-a442-a47798ed14f6",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "55fcf15e-9cf8-43aa-bc0a-8fd0f38f35ab",
+      "itemId": "d31dab79-da11-4ec7-a1a2-ebbae9dc9e72",
+      "action": "before_edit",
+      "oldQuantity": 30,
+      "newQuantity": 30,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:51:57.785Z"
+    },
+    {
+      "id": "21da3ead-816a-400e-b8da-1b5218692813",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "55fcf15e-9cf8-43aa-bc0a-8fd0f38f35ab",
+      "itemId": "d31dab79-da11-4ec7-a1a2-ebbae9dc9e72",
+      "action": "after_edit",
+      "oldQuantity": 30,
+      "newQuantity": 30,
+      "soldQuantity": 10,
+      "createdAt": "2026-06-03T01:51:57.785Z"
+    },
+    {
+      "id": "4add3997-57ae-47bd-a410-0e90d0b88cc6",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "43bafb65-41a4-420f-823a-3bc3cf8ae381",
+      "itemId": "8fdeb82b-f3f3-4264-bcfd-8e6bb2f40635",
+      "action": "before_edit",
+      "oldQuantity": 8,
+      "newQuantity": 8,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:52:43.005Z"
+    },
+    {
+      "id": "97b2cf29-5236-461b-8e66-2059f93e7a4f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "43bafb65-41a4-420f-823a-3bc3cf8ae381",
+      "itemId": "8fdeb82b-f3f3-4264-bcfd-8e6bb2f40635",
+      "action": "after_edit",
+      "oldQuantity": 8,
+      "newQuantity": 8,
+      "soldQuantity": 8,
+      "createdAt": "2026-06-03T01:52:43.005Z"
+    },
+    {
+      "id": "9c9ec07d-32d6-49f2-8a42-6187a628f57f",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "itemId": "c30bf653-7c85-45c2-bcb1-7cefabe13f8c",
+      "action": "created",
+      "oldQuantity": 0,
+      "newQuantity": 4,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:58:37.169Z"
+    },
+    {
+      "id": "c7b22f51-d0ea-4062-9a46-507c802a36a0",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "693f6138-700d-47f0-a118-3fd5c7cd6b82",
+      "itemId": "c30bf653-7c85-45c2-bcb1-7cefabe13f8c",
+      "action": "before_edit",
+      "oldQuantity": 4,
+      "newQuantity": 4,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:59:37.044Z"
+    },
+    {
+      "id": "3fc795de-8c2b-4d11-84ce-bd55d4cbc7d1",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "c30bf653-7c85-45c2-bcb1-7cefabe13f8c",
+      "action": "after_edit",
+      "oldQuantity": 4,
+      "newQuantity": 4,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T01:59:37.044Z"
+    },
+    {
+      "id": "651d5b51-966f-4beb-b330-2929db69c04b",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "c30bf653-7c85-45c2-bcb1-7cefabe13f8c",
+      "action": "before_edit",
+      "oldQuantity": 4,
+      "newQuantity": 4,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T02:02:58.551Z"
+    },
+    {
+      "id": "2cd4e96a-f1ba-4b34-830b-caa4c0126d65",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "c30bf653-7c85-45c2-bcb1-7cefabe13f8c",
+      "action": "after_edit",
+      "oldQuantity": 4,
+      "newQuantity": 4,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T02:02:58.551Z"
+    },
+    {
+      "id": "9c7950a3-b12d-4377-8c7f-858f2fc20935",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "c30bf653-7c85-45c2-bcb1-7cefabe13f8c",
+      "action": "before_edit",
+      "oldQuantity": 4,
+      "newQuantity": 4,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T02:03:31.934Z"
+    },
+    {
+      "id": "50b863c7-1978-4949-a557-d90db632e2bc",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "c30bf653-7c85-45c2-bcb1-7cefabe13f8c",
+      "action": "after_edit",
+      "oldQuantity": 4,
+      "newQuantity": 4,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T02:03:31.934Z"
+    },
+    {
+      "id": "be8f5b3d-a61a-439c-9f92-0d8b04c2d841",
+      "businessId": "68ba3dbb-96c8-4c9a-b4b5-6e25ffdccb82",
+      "userId": "d58f4ac1-c8fd-49d2-9edc-6fab34fd4acc",
+      "categoryId": "14219152-13fc-4f0d-9f66-616a92db5a8c",
+      "itemId": "311b0a92-5041-4628-9180-a3d315a0e1ef",
+      "action": "created",
+      "oldQuantity": 0,
+      "newQuantity": 65,
+      "soldQuantity": 0,
+      "createdAt": "2026-06-03T02:04:48.799Z"
+    }
+  ]
+}

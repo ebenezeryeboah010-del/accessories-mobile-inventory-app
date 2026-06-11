@@ -1,0 +1,33 @@
+{
+  "name": "mobile-inventory-web-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile phone and accessories inventory management web app generated from the prompt pack.",
+  "scripts": {
+    "start": "node server.js",
+    "build": "prisma generate --force",
+    "start:postgres": "node server.postgres.js",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev --name init",
+    "db:push": "prisma db push",
+    "db:seed": "node scripts/import-json-to-postgres.js",
+    "test": "node tests/api-smoke.test.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "socket.io": "^4.8.1",
+    "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "prisma": "^6.19.3"
+  }
+}
