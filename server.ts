@@ -7,7 +7,7 @@ import bcrypt from "bcryptjs";
 import { PrismaClient, Role } from "@prisma/client";
 import { createServer as createViteServer } from "vite";
 
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 const JWT_SECRET = process.env.JWT_SECRET || "mobilehub-super-secret-key-2026";
 
 // Instantiate database clients or fallbacks
@@ -1145,6 +1145,7 @@ app.get("/api/reports/category-summary", auth, async (req: any, res: Response) =
         let inventoryCostValue = 0;
         let soldValue = 0;
         let remainingStockValue = 0;
+        let totalSoldCostValue = 0;
 
         category.inventory.forEach((item) => {
           const cost = Number(item.costPrice);
@@ -1154,6 +1155,7 @@ app.get("/api/reports/category-summary", auth, async (req: any, res: Response) =
           inventoryCostValue += item.quantity * cost;
           soldValue += item.soldQuantity * sell;
           remainingStockValue += item.quantity * sell;
+          totalSoldCostValue += item.soldQuantity * cost;
         });
 
         return {
@@ -1165,7 +1167,8 @@ app.get("/api/reports/category-summary", auth, async (req: any, res: Response) =
           totalSoldQuantity,
           inventoryCostValue,
           soldValue,
-          remainingStockValue
+          remainingStockValue,
+          totalSoldCostValue
         };
       });
 
@@ -1184,6 +1187,7 @@ app.get("/api/reports/category-summary", auth, async (req: any, res: Response) =
       let inventoryCostValue = 0;
       let soldValue = 0;
       let remainingStockValue = 0;
+      let totalSoldCostValue = 0;
 
       catItems.forEach((item) => {
         totalQuantity += item.quantity;
@@ -1191,6 +1195,7 @@ app.get("/api/reports/category-summary", auth, async (req: any, res: Response) =
         inventoryCostValue += item.quantity * item.costPrice;
         soldValue += item.soldQuantity * item.sellingPrice;
         remainingStockValue += item.quantity * item.sellingPrice;
+        totalSoldCostValue += item.soldQuantity * item.costPrice;
       });
 
       return {
@@ -1202,7 +1207,8 @@ app.get("/api/reports/category-summary", auth, async (req: any, res: Response) =
         totalSoldQuantity,
         inventoryCostValue,
         soldValue,
-        remainingStockValue
+        remainingStockValue,
+        totalSoldCostValue
       };
     });
 

@@ -30,6 +30,7 @@ import {
   LockKeyhole
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+const logoImage = "/src/assets/images/favicon_1781227911663.jpg";
 
 // Types
 interface Category {
@@ -65,6 +66,7 @@ interface CategoryReport {
   inventoryCostValue: number;
   soldValue: number;
   remainingStockValue: number;
+  totalSoldCostValue?: number;
 }
 
 interface StockSplitReport {
@@ -686,9 +688,12 @@ export default function App() {
         <div className="w-full md:w-1/2 bg-slate-900 border-r border-slate-800 p-8 md:p-12 lg:p-16 flex flex-col justify-between text-slate-200">
           <div>
             <div className="flex items-center gap-3 mb-10">
-              <span className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center font-black text-white text-lg tracking-wider">
-                MH
-              </span>
+              <img
+                src={logoImage}
+                alt="Logo"
+                className="w-10 h-10 rounded-lg object-cover border border-slate-800"
+                referrerPolicy="no-referrer"
+              />
               <span className="font-extrabold text-xl tracking-tight text-white">MobileHub Inventory</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tighter mb-6 mt-12">
@@ -700,15 +705,11 @@ export default function App() {
             </p>
           </div>
 
-          <div className="mt-12">
-            <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 bg-emerald-950/45 px-3 py-1.5 rounded-md border border-emerald-900/30 w-fit">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full"></span>
-              Demo Server Operating Mode
-            </div>
-            <div className="text-xs text-slate-500 mt-2 font-mono">
-              Test CEO: ceo@mobilehub.test | password123 <br />
-              Test Manager: manager@mobilehub.test | password123
-            </div>
+          <div className="mt-12 text-xs text-slate-400 font-mono">
+            © Accessories Mobile Inventory. All rights reserved. Built by Yeboah E. Takyi |{' '}
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald-400 transition-colors">
+              GitHub
+            </a>
           </div>
         </div>
 
@@ -1041,9 +1042,12 @@ export default function App() {
         <div>
           {/* Brand header */}
           <div className="p-6 border-b border-slate-800/65 flex items-center gap-3">
-            <span className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center font-black text-white text-sm tracking-widest leading-none">
-              MH
-            </span>
+            <img
+              src={logoImage}
+              alt="Logo"
+              className="w-8 h-8 rounded-lg object-cover border border-slate-800"
+              referrerPolicy="no-referrer"
+            />
             <div>
               <h3 className="font-extrabold text-sm tracking-tight text-white leading-none capitalize truncate max-w-[130px]" title={business?.name}>
                 {business?.name}
@@ -1565,107 +1569,149 @@ export default function App() {
             </div>
           )}
 
-          {activeTab === "reports" && (
-            <div className="space-y-8 bg-transparent">
-              {/* Feature 2: Stock Split values card summaries */}
-              {stockSplit && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
-                    <span className="text-xs font-black uppercase text-slate-400">Total Asset Initial Cost</span>
-                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mt-1.5">
-                      {fmtMoney(stockSplit.totalInventoryCost)}
-                    </h3>
-                    <p className="text-[11px] text-slate-500 mt-2">
-                      Aggregate cost value of all stocked items (both remaining and sold): <br />
-                      Remaining Cost: {fmtMoney(stockSplit.currentStockCost)} + <br />
-                      Sold Cost Basis: {fmtMoney(stockSplit.soldStockCost)}
-                    </p>
-                  </div>
+          {activeTab === "reports" && (() => {
+            const grandTotalSkus = summaryReport.reduce((acc, r) => acc + (r.itemCount || 0), 0);
+            const grandTotalInStock = summaryReport.reduce((acc, r) => acc + (r.totalQuantity || 0), 0);
+            const grandTotalSoldQuantity = summaryReport.reduce((acc, r) => acc + (r.totalSoldQuantity || 0), 0);
+            const grandTotalSoldCost = summaryReport.reduce((acc, r) => acc + (r.totalSoldCostValue || 0), 0);
+            const grandTotalAssetCost = summaryReport.reduce((acc, r) => acc + (r.inventoryCostValue || 0), 0);
+            const grandTotalSalesProceeds = summaryReport.reduce((acc, r) => acc + (r.soldValue || 0), 0);
+            const grandTotalRemainingRetail = summaryReport.reduce((acc, r) => acc + (r.remainingStockValue || 0), 0);
 
-                  <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
-                    <span className="text-xs font-black uppercase text-slate-400">Remaining Retail Selling Value</span>
-                    <h3 className="text-2xl font-black text-emerald-500 mt-1.5">
-                      {fmtMoney(stockSplit.currentStockRetailValue)}
-                    </h3>
-                    <p className="text-[11px] text-slate-500 mt-2">
-                      Retail worth or potential proceeds for active stock currently present back in shelving.
-                    </p>
-                  </div>
+            return (
+              <div className="space-y-8 bg-transparent">
+                {/* Feature 2: Stock Split values card summaries */}
+                {stockSplit && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
+                      <span className="text-xs font-black uppercase text-slate-400">Total Asset Initial Cost</span>
+                      <h3 className="text-2xl font-black text-slate-900 dark:text-white mt-1.5">
+                        {fmtMoney(stockSplit.totalInventoryCost)}
+                      </h3>
+                      <p className="text-[11px] text-slate-500 mt-2">
+                        Aggregate cost value of all stocked items (both remaining and sold): <br />
+                        Remaining Cost: {fmtMoney(stockSplit.currentStockCost)} + <br />
+                        Sold Cost Basis: {fmtMoney(stockSplit.soldStockCost)}
+                      </p>
+                    </div>
 
-                  <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
-                    <span className="text-xs font-black uppercase text-slate-400">Archived Sales Genuines</span>
-                    <h3 className="text-2xl font-black text-teal-500 mt-1.5">
-                      {fmtMoney(stockSplit.soldRetailValue)}
-                    </h3>
-                    <p className="text-[11px] text-slate-500 mt-2">
-                      Total retail volume revenue retrieved from sold stock units.
-                    </p>
-                  </div>
-                </div>
-              )}
+                    <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
+                      <span className="text-xs font-black uppercase text-slate-400">Remaining Retail Selling Value</span>
+                      <h3 className="text-2xl font-black text-emerald-500 mt-1.5">
+                        {fmtMoney(stockSplit.currentStockRetailValue)}
+                      </h3>
+                      <p className="text-[11px] text-slate-500 mt-2">
+                        Retail worth or potential proceeds for active stock currently present back in shelving.
+                      </p>
+                    </div>
 
-              {/* Feature 1 Category Summary Reports Table */}
-              <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
-                <h3 className="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-widest mb-4">
-                  Category Financial Summary (FEATURE 1)
-                </h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse min-w-[800px] text-sm md:text-sm">
-                    <thead>
-                      <tr className="bg-slate-50 dark:bg-slate-850/50 font-bold uppercase tracking-wider text-[11px] text-slate-500 border-b border-rose border-slate-200 dark:border-slate-850">
-                        <th className="p-3 pl-4">Category Name</th>
-                        <th className="p-3 text-center">Type Group</th>
-                        <th className="p-3 text-center">Distinct SKUs</th>
-                        <th className="p-3 text-center">In Stock Units</th>
-                        <th className="p-3 text-center">Units Sold</th>
-                        <th className="p-3 text-center">Stock Asset Cost</th>
-                        <th className="p-3 text-center">Sales Proceeds</th>
-                        <th className="p-3 text-center">Remaining Retail Value</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-slate-850">
-                      {summaryReport.length === 0 ? (
-                        <tr>
-                          <td colSpan={8} className="p-8 text-center text-slate-400 font-bold">
-                            No reporting categories metrics calculated yet.
-                          </td>
+                    <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
+                      <span className="text-xs font-black uppercase text-slate-400">General Profit of Goods Sold</span>
+                      <h3 className="text-2xl font-black text-teal-550 text-teal-600 dark:text-emerald-400 mt-1.5">
+                        {fmtMoney(stockSplit.soldRetailValue - stockSplit.soldStockCost)}
+                      </h3>
+                      <p className="text-[11px] text-slate-500 mt-2">
+                        Actual profit generated on all sold inventory items (Sales Proceeds minus Sold Cost Basis).
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Feature 1 Category Summary Reports Table */}
+                <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
+                  <h3 className="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-widest mb-4">
+                    Category Financial Summary (FEATURE 1)
+                  </h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse min-w-[900px] text-sm md:text-sm">
+                      <thead>
+                        <tr className="bg-slate-50 dark:bg-slate-850/50 font-bold uppercase tracking-wider text-[11px] text-slate-500 border-b border-slate-200 dark:border-slate-850">
+                          <th className="p-3 pl-4">Category Name</th>
+                          <th className="p-3 text-center">Type Group</th>
+                          <th className="p-3 text-center">Distinct SKUs</th>
+                          <th className="p-3 text-center">In Stock Units</th>
+                          <th className="p-3 text-center">Units Sold</th>
+                          <th className="p-3 text-center">Cost of Sold Units</th>
+                          <th className="p-3 text-center">Stock Asset Cost</th>
+                          <th className="p-3 text-center">Sales Proceeds</th>
+                          <th className="p-3 text-center">Remaining Retail Value</th>
                         </tr>
-                      ) : (
-                        summaryReport.map((rep) => (
-                          <tr key={rep.categoryId} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 transition-colors">
-                            <td className="p-3 pl-4 font-extrabold text-slate-900 dark:text-white">
-                              {rep.categoryName}
-                            </td>
-                            <td className="p-3 text-center">
-                              <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded">
-                                {rep.categoryGroup || "General"}
-                              </span>
-                            </td>
-                            <td className="p-3 text-center font-mono font-semibold text-slate-800 dark:text-slate-200">
-                              {rep.itemCount}
-                            </td>
-                            <td className="p-3 text-center font-mono font-semibold text-slate-800 dark:text-slate-200">
-                              {rep.totalQuantity}
-                            </td>
-                            <td className="p-3 text-center font-mono font-semibold text-slate-800 dark:text-slate-200">
-                              {rep.totalSoldQuantity}
-                            </td>
-                            <td className="p-3 text-center font-mono font-bold text-slate-600 dark:text-slate-300">
-                              {fmtMoney(rep.inventoryCostValue)}
-                            </td>
-                            <td className="p-3 text-center font-mono font-extrabold text-emerald-600 dark:text-brand-accent">
-                              {fmtMoney(rep.soldValue)}
-                            </td>
-                            <td className="p-3 text-center font-mono font-bold text-slate-800 dark:text-slate-100">
-                              {fmtMoney(rep.remainingStockValue)}
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 dark:divide-slate-850">
+                        {summaryReport.length === 0 ? (
+                          <tr>
+                            <td colSpan={9} className="p-8 text-center text-slate-400 font-bold">
+                              No reporting categories metrics calculated yet.
                             </td>
                           </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
+                        ) : (
+                          <>
+                            {summaryReport.map((rep) => (
+                              <tr key={rep.categoryId} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 transition-colors">
+                                <td className="p-3 pl-4 font-extrabold text-slate-900 dark:text-white">
+                                  {rep.categoryName}
+                                </td>
+                                <td className="p-3 text-center">
+                                  <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded">
+                                    {rep.categoryGroup || "General"}
+                                  </span>
+                                </td>
+                                <td className="p-3 text-center font-mono font-semibold text-slate-800 dark:text-slate-200">
+                                  {rep.itemCount}
+                                </td>
+                                <td className="p-3 text-center font-mono font-semibold text-slate-800 dark:text-slate-200">
+                                  {rep.totalQuantity}
+                                </td>
+                                <td className="p-3 text-center font-mono font-semibold text-slate-800 dark:text-slate-200">
+                                  {rep.totalSoldQuantity}
+                                </td>
+                                <td className="p-3 text-center font-mono font-bold text-slate-600 dark:text-slate-400">
+                                  {fmtMoney(rep.totalSoldCostValue || 0)}
+                                </td>
+                                <td className="p-3 text-center font-mono font-bold text-slate-600 dark:text-slate-300">
+                                  {fmtMoney(rep.inventoryCostValue)}
+                                </td>
+                                <td className="p-3 text-center font-mono font-extrabold text-emerald-600 dark:text-emerald-400">
+                                  {fmtMoney(rep.soldValue)}
+                                </td>
+                                <td className="p-3 text-center font-mono font-bold text-slate-800 dark:text-slate-100">
+                                  {fmtMoney(rep.remainingStockValue)}
+                                </td>
+                              </tr>
+                            ))}
+                            {/* All category combined row */}
+                            <tr className="bg-slate-100/80 dark:bg-slate-800/80 font-black border-t-2 border-slate-300 dark:border-slate-700 text-slate-950 dark:text-white">
+                              <td className="p-3 pl-4 uppercase tracking-wider text-[11px]" colSpan={2}>
+                                All Categories Combined
+                              </td>
+                              <td className="p-3 text-center font-mono">
+                                {grandTotalSkus}
+                              </td>
+                              <td className="p-3 text-center font-mono">
+                                {grandTotalInStock}
+                              </td>
+                              <td className="p-3 text-center font-mono text-indigo-600 dark:text-indigo-400">
+                                {grandTotalSoldQuantity}
+                              </td>
+                              <td className="p-3 text-center font-mono text-slate-700 dark:text-slate-350">
+                                {fmtMoney(grandTotalSoldCost)}
+                              </td>
+                              <td className="p-3 text-center font-mono text-slate-700 dark:text-slate-300">
+                                {fmtMoney(grandTotalAssetCost)}
+                              </td>
+                              <td className="p-3 text-center font-mono text-emerald-650 dark:text-emerald-400">
+                                {fmtMoney(grandTotalSalesProceeds)}
+                              </td>
+                              <td className="p-3 text-center font-mono">
+                                {fmtMoney(grandTotalRemainingRetail)}
+                              </td>
+                            </tr>
+                          </>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
 
               {/* Feature 4 Low Stock Alerts Reports */}
               <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
@@ -1714,7 +1760,8 @@ export default function App() {
                 )}
               </div>
             </div>
-          )}
+          );
+        })()}
 
           {activeTab === "categories" && (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-transparent">
@@ -2012,6 +2059,14 @@ export default function App() {
               </form>
             </div>
           )}
+
+          {/* Persistent global footer */}
+          <footer className="mt-16 pt-6 border-t border-slate-200/50 dark:border-slate-800/60 text-center text-xs text-slate-400 dark:text-slate-500 font-mono">
+            © Accessories Mobile Inventory. All rights reserved. Built by Yeboah E. Takyi |{' '}
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald-500 transition-colors">
+              GitHub
+            </a>
+          </footer>
         </div>
       </main>
 
