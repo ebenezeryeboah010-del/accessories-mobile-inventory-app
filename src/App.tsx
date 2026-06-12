@@ -30,7 +30,7 @@ import {
   LockKeyhole
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-const logoImage = "/src/assets/images/favicon_1781227911663.jpg";
+const logoImage = "/src/assets/images/yeboah_logo_1781302319870.jpg";
 
 // Types
 interface Category {
@@ -257,7 +257,10 @@ export default function App() {
       const meRes = await fetch("/api/me", {
         headers: { Authorization: `Bearer ${tokenStr}` }
       });
-      if (!meRes.ok) throw new Error("Session invalid");
+      if (!meRes.ok) {
+        handleLogout();
+        return;
+      }
       const meData = await meRes.json();
       setMe(meData.user);
       setBusiness(meData.business);
@@ -659,7 +662,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `MobileHub_Inventory_${new Date().toISOString().split("T")[0]}.csv`;
+    link.download = `Yeboah_Accessories_Inventory_${new Date().toISOString().split("T")[0]}.csv`;
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -694,7 +697,7 @@ export default function App() {
                 className="w-10 h-10 rounded-lg object-cover border border-slate-800"
                 referrerPolicy="no-referrer"
               />
-              <span className="font-extrabold text-xl tracking-tight text-white">MobileHub Inventory</span>
+              <span className="font-extrabold text-xl tracking-tight text-white">Yeboah Accessories</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tighter mb-6 mt-12">
               Precise Stock <br />
@@ -816,7 +819,7 @@ export default function App() {
                       name="businessName"
                       required
                       className="px-3.5 w-full h-[46px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-                      placeholder="e.g. MobileHub Kumasi Branch"
+                      placeholder="e.g. Yeboah Accessories Kumasi Branch"
                     />
                   </div>
 

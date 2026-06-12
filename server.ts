@@ -49,7 +49,7 @@ function seedMockData() {
 
   mockDb.businesses.push({
     id: SEED_BUSINESS_ID,
-    name: "MobileHub Accessories",
+    name: "Yeboah Accessories",
     createdAt: new Date(),
   });
 
