@@ -697,7 +697,7 @@ export default function App() {
                 className="w-10 h-10 rounded-lg object-cover border border-slate-800"
                 referrerPolicy="no-referrer"
               />
-              <span className="font-extrabold text-xl tracking-tight text-white">Yeboah Accessories</span>
+              <span className="font-extrabold text-xl tracking-tight text-white">Mobile Accessories Inventory & Profit Tracker</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tighter mb-6 mt-12">
               Precise Stock <br />
