@@ -30,7 +30,7 @@ import {
   LockKeyhole
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-const logoImage = "/src/assets/images/yeboah_logo_1781302319870.jpg";
+const  logoImage = "/assets/images/yeboah_logo_1781302319870.jpg";
 
 // Types
 interface Category {
