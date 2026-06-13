@@ -842,6 +842,19 @@ app.put("/api/inventory/:id", auth, async (req: any, res: Response) => {
       const current = await prisma.inventoryItem.findFirst({ where: { id, businessId: req.businessId } });
       if (!current) return res.status(404).json({ error: "Item metadata not found" });
 
+      const oldQty = current.quantity;
+      const oldSold = current.soldQuantity;
+
+      const inputQty = quantity !== undefined ? Number(quantity) : oldQty;
+      const inputSold = soldQuantity !== undefined ? Number(soldQuantity) : oldSold;
+
+      const soldDiff = inputSold - oldSold;
+      const qtyDiff = inputQty - oldQty;
+      let calculatedQty = oldQty + qtyDiff - soldDiff;
+      if (calculatedQty < 0) {
+        calculatedQty = 0;
+      }
+
       const item = await prisma.inventoryItem.update({
         where: { id },
         data: {
@@ -849,8 +862,8 @@ app.put("/api/inventory/:id", auth, async (req: any, res: Response) => {
           name,
           sku: name ? name.toUpperCase().replace(/[^A-Z0-9]+/g, "-") : current.sku,
           type: type || current.type,
-          quantity: Number(quantity ?? current.quantity),
-          soldQuantity: Number(soldQuantity ?? current.soldQuantity),
+          quantity: calculatedQty,
+          soldQuantity: inputSold,
           costPrice: Number(costPrice ?? current.costPrice),
           sellingPrice: Number(sellingPrice ?? current.sellingPrice),
           location: location || current.location,
@@ -892,13 +905,25 @@ app.put("/api/inventory/:id", auth, async (req: any, res: Response) => {
     if (!item) return res.status(404).json({ error: "Product metadata represented by identifier not found" });
 
     const oldQty = item.quantity;
+    const oldSold = item.soldQuantity;
+
+    const inputQty = quantity !== undefined ? Number(quantity) : oldQty;
+    const inputSold = soldQuantity !== undefined ? Number(soldQuantity) : oldSold;
+
+    const soldDiff = inputSold - oldSold;
+    const qtyDiff = inputQty - oldQty;
+    let calculatedQty = oldQty + qtyDiff - soldDiff;
+    if (calculatedQty < 0) {
+      calculatedQty = 0;
+    }
+
     Object.assign(item, {
       categoryId: categoryId || item.categoryId,
       name: name || item.name,
       sku: name ? name.toUpperCase().replace(/[^A-Z0-9]+/g, "-") : item.sku,
       type: type || item.type,
-      quantity: Number(quantity ?? item.quantity),
-      soldQuantity: Number(soldQuantity ?? item.soldQuantity),
+      quantity: calculatedQty,
+      soldQuantity: inputSold,
       costPrice: Number(costPrice ?? item.costPrice),
       sellingPrice: Number(sellingPrice ?? item.sellingPrice),
       location: location || item.location,

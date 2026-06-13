@@ -30,7 +30,7 @@ import {
   LockKeyhole
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-const  logoImage = "/assets/images/yeboah_logo_1781302319870.jpg";
+const logoImage = "/src/assets/images/yeboah_logo_1781302319870.jpg";
 
 // Types
 interface Category {
@@ -2145,9 +2145,23 @@ export default function App() {
                       type="number"
                       min="0"
                       value={itemForm.soldQuantity}
-                      onChange={(e) => setItemForm({ ...itemForm, soldQuantity: Number(e.target.value) })}
+                      onChange={(e) => {
+                        const newSold = Number(e.target.value);
+                        if (editingItem) {
+                          const diff = newSold - editingItem.soldQuantity;
+                          const newQty = Math.max(0, editingItem.quantity - diff);
+                          setItemForm({ ...itemForm, soldQuantity: newSold, quantity: newQty });
+                        } else {
+                          setItemForm({ ...itemForm, soldQuantity: newSold });
+                        }
+                      }}
                       className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
                     />
+                    {editingItem && (
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 block leading-tight">
+                        * Dynamic adjustment: increasing sold units reduces units in stock.
+                      </span>
+                    )}
                   </div>
 
                   <div className="space-y-1">
