@@ -47,10 +47,11 @@ model User {
 }
 
 model Category {
-  id         String @id @default(uuid())
-  businessId String
-  name       String
-  group      String
+  id                 String   @id @default(uuid())
+  businessId         String
+  name               String
+  group              String
+  lowStockThreshold  Int?     @default(8)
 
   business  Business        @relation(fields: [businessId], references: [id], onDelete: Cascade)
   inventory InventoryItem[]

@@ -91,6 +91,7 @@ function seedMockData() {
       businessId: SEED_BUSINESS_ID,
       name: c.name,
       group: c.group,
+      lowStockThreshold: null,
     });
   });
 
@@ -180,6 +181,171 @@ function seedMockData() {
 }
 
 seedMockData();
+
+async function seedPrismaDatabase() {
+  if (!prisma) return;
+  try {
+    const userCount = await prisma.user.count();
+    if (userCount > 0) {
+      console.log("Prisma Database already seeded or populated.");
+      return;
+    }
+
+    console.log("Empty Prisma Database detected! Seeding default business and users...");
+
+    // Create SEED Business
+    await prisma.business.create({
+      data: {
+        id: SEED_BUSINESS_ID,
+        name: "Yeboah Accessories",
+        settings: {
+          create: {
+            lowStockThreshold: 8,
+            darkMode: false,
+            notifyCeoOnManagerStock: true,
+            emailNotifications: true,
+            smsNotifications: false,
+            accountingProvider: "CSV",
+            accountingEmail: "ceo@mobilehub.test",
+            smsPhone: "+233543210987",
+            currency: "USD",
+          }
+        }
+      }
+    });
+
+    const salt = bcrypt.genSaltSync(10);
+    // Create Users
+    await prisma.user.create({
+      data: {
+        id: SEED_CEO_ID,
+        businessId: SEED_BUSINESS_ID,
+        name: "Amina CEO",
+        email: "ceo@mobilehub.test",
+        role: "CEO" as Role,
+        passwordHash: bcrypt.hashSync("password123", salt),
+      }
+    });
+
+    await prisma.user.create({
+      data: {
+        id: SEED_MANAGER_ID,
+        businessId: SEED_BUSINESS_ID,
+        name: "Musa Manager",
+        email: "manager@mobilehub.test",
+        role: "Manager" as Role,
+        passwordHash: bcrypt.hashSync("password123", salt),
+      }
+    });
+
+    // Create Categories
+    const defaultCats = [
+      { id: "c1", name: "Android phones", group: "Phones" },
+      { id: "c2", name: "Cell phones", group: "Phones" },
+      { id: "c3", name: "Android accessories", group: "Accessories" },
+      { id: "c4", name: "Cell phone accessories", group: "Accessories" },
+      { id: "c5", name: "Chargers", group: "Power" },
+      { id: "c6", name: "Headsets and earphones", group: "Audio" },
+      { id: "c7", name: "AirPods", group: "Audio" },
+      { id: "c8", name: "Screen protectors", group: "Protection" },
+      { id: "c9", name: "Phone batteries", group: "Power" },
+      { id: "c10", name: "Other accessories", group: "Accessories" },
+    ];
+
+    await Promise.all(
+      defaultCats.map(cat =>
+        prisma!.category.create({
+          data: {
+            id: cat.id,
+            businessId: SEED_BUSINESS_ID,
+            name: cat.name,
+            group: cat.group,
+            lowStockThreshold: null,
+          }
+        })
+      )
+    );
+
+    // Create Inventory Items
+    const defaultInventory = [
+      {
+        id: "i1",
+        businessId: SEED_BUSINESS_ID,
+        categoryId: "c1",
+        name: "Samsung Galaxy A35",
+        sku: "SAMSUNG-GALAXY-A35",
+        type: "Phones",
+        quantity: 18,
+        soldQuantity: 4,
+        costPrice: 210,
+        sellingPrice: 315,
+        location: "Shelf A1",
+        barcode: "847294719482",
+      },
+      {
+        id: "i2",
+        businessId: SEED_BUSINESS_ID,
+        categoryId: "c2",
+        name: "Nokia 105",
+        sku: "NOKIA-105",
+        type: "Phones",
+        quantity: 32,
+        soldQuantity: 12,
+        costPrice: 18,
+        sellingPrice: 29,
+        location: "Shelf A2",
+        barcode: "283749174918",
+      },
+      {
+        id: "i3",
+        businessId: SEED_BUSINESS_ID,
+        categoryId: "c5",
+        name: "45W USB-C Fast Charger",
+        sku: "FAST-CHARGER-45W",
+        type: "Android accessories",
+        quantity: 6,
+        soldQuantity: 28,
+        costPrice: 7,
+        sellingPrice: 15,
+        location: "Bin C4",
+        barcode: "274819481974",
+      },
+      {
+        id: "i4",
+        businessId: SEED_BUSINESS_ID,
+        categoryId: "c6",
+        name: "Braided Type-C Earphones",
+        sku: "BRAIDED-C-EARPHONE",
+        type: "Cell phone accessories",
+        quantity: 24,
+        soldQuantity: 5,
+        costPrice: 4,
+        sellingPrice: 10,
+        location: "Bin D2",
+        barcode: "729481048104",
+      }
+    ];
+
+    for (const item of defaultInventory) {
+      await prisma!.inventoryItem.create({
+        data: item
+      });
+    }
+
+    await prisma.auditLog.create({
+      data: {
+        id: "a1",
+        businessId: SEED_BUSINESS_ID,
+        userId: SEED_CEO_ID,
+        action: "System started on postgres with automatically seeded default data",
+      }
+    });
+
+    console.log("Prisma Live Database successfully seeded with defaults!");
+  } catch (err) {
+    console.error("Failed to seed Prisma Database:", err);
+  }
+}
 
 // Express configuration
 const app = express();
@@ -1300,9 +1466,10 @@ app.get("/api/reports/dashboard-overview", auth, async (req: any, res: Response)
 
   if (prisma) {
     try {
-      const [totalCats, items] = await Promise.all([
+      const [totalCats, items, categoryList] = await Promise.all([
         prisma.category.count({ where: { businessId: req.businessId } }),
-        prisma.inventoryItem.findMany({ where: { businessId: req.businessId } })
+        prisma.inventoryItem.findMany({ where: { businessId: req.businessId } }),
+        prisma.category.findMany({ where: { businessId: req.businessId } })
       ]);
 
       let totalUnitsInStock = 0;
@@ -1316,7 +1483,10 @@ app.get("/api/reports/dashboard-overview", auth, async (req: any, res: Response)
         totalUnitsSold += item.soldQuantity;
         inventoryCostValue += item.quantity * Number(item.costPrice);
         inventoryRetailValue += item.quantity * Number(item.sellingPrice);
-        if (item.quantity <= threshold) lowItems++;
+        
+        const cat = categoryList.find(c => c.id === item.categoryId);
+        const itemThreshold = (cat && cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null) ? cat.lowStockThreshold : threshold;
+        if (item.quantity <= itemThreshold) lowItems++;
       });
 
       return res.json({
@@ -1332,7 +1502,8 @@ app.get("/api/reports/dashboard-overview", auth, async (req: any, res: Response)
       return res.status(500).json({ error: err.message });
     }
   } else {
-    const categoriesCount = mockDb.categories.filter((c) => c.businessId === req.businessId).length;
+    const categoriesList = mockDb.categories.filter((c) => c.businessId === req.businessId);
+    const categoriesCount = categoriesList.length;
     const items = mockDb.inventory.filter((i) => i.businessId === req.businessId);
 
     let totalUnitsInStock = 0;
@@ -1346,7 +1517,10 @@ app.get("/api/reports/dashboard-overview", auth, async (req: any, res: Response)
       totalUnitsSold += item.soldQuantity;
       inventoryCostValue += item.quantity * item.costPrice;
       inventoryRetailValue += item.quantity * item.sellingPrice;
-      if (item.quantity <= threshold) lowItems++;
+      
+      const cat = categoriesList.find((c) => c.id === item.categoryId);
+      const itemThreshold = (cat && cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null) ? cat.lowStockThreshold : threshold;
+      if (item.quantity <= itemThreshold) lowItems++;
     });
 
     return res.json({
@@ -1368,16 +1542,30 @@ app.get("/api/reports/low-stock", auth, async (req: any, res: Response) => {
   if (prisma) {
     try {
       const items = await prisma.inventoryItem.findMany({
-        where: { businessId: req.businessId, quantity: { lte: threshold } },
+        where: { businessId: req.businessId },
         include: { category: true },
         orderBy: { quantity: "asc" }
       });
-      return res.json(items.map(item => ({ ...item, costPrice: Number(item.costPrice), sellingPrice: Number(item.sellingPrice) })));
+      const lowStockItems = items.filter(item => {
+        const itemThreshold = item.category?.lowStockThreshold !== undefined && item.category?.lowStockThreshold !== null 
+          ? item.category.lowStockThreshold 
+          : threshold;
+        return item.quantity <= itemThreshold;
+      });
+      return res.json(lowStockItems.map(item => ({ ...item, costPrice: Number(item.costPrice), sellingPrice: Number(item.sellingPrice) })));
     } catch (err: any) {
       return res.status(500).json({ error: err.message });
     }
   } else {
-    const items = mockDb.inventory.filter((i) => i.businessId === req.businessId && i.quantity <= threshold);
+    const categoriesList = mockDb.categories.filter((c) => c.businessId === req.businessId);
+    const items = mockDb.inventory.filter((i) => {
+      if (i.businessId !== req.businessId) return false;
+      const cat = categoriesList.find(c => c.id === i.categoryId);
+      const itemThreshold = cat && cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null 
+        ? cat.lowStockThreshold 
+        : threshold;
+      return i.quantity <= itemThreshold;
+    });
     return res.json(items);
   }
 });
@@ -1398,11 +1586,12 @@ app.get("/api/reports/categories", auth, async (req: any, res: Response) => {
 });
 
 app.post("/api/reports/categories", auth, async (req: any, res: Response) => {
-  const { name, group } = req.body;
+  const { name, group, lowStockThreshold } = req.body;
   if (!name || !group) return res.status(400).json({ error: "Name and group are required elements" });
 
   const trimmedName = name.trim();
   const trimmedGroup = group.trim();
+  const thresholdVal = (lowStockThreshold !== undefined && lowStockThreshold !== null && lowStockThreshold !== "") ? Number(lowStockThreshold) : null;
 
   if (prisma) {
     try {
@@ -1411,7 +1600,14 @@ app.post("/api/reports/categories", auth, async (req: any, res: Response) => {
       });
       if (existing) return res.status(409).json({ error: "Category names already registered" });
 
-      const cat = await prisma.category.create({ data: { businessId: req.businessId, name: trimmedName, group: trimmedGroup } });
+      const cat = await prisma.category.create({ 
+        data: { 
+          businessId: req.businessId, 
+          name: trimmedName, 
+          group: trimmedGroup,
+          lowStockThreshold: thresholdVal
+        } 
+      });
       return res.status(201).json(cat);
     } catch (err: any) {
       return res.status(500).json({ error: err.message });
@@ -1420,7 +1616,13 @@ app.post("/api/reports/categories", auth, async (req: any, res: Response) => {
     const exists = mockDb.categories.find((c) => c.businessId === req.businessId && c.name.toLowerCase() === trimmedName.toLowerCase());
     if (exists) return res.status(409).json({ error: "Category name already exists in mock data" });
 
-    const newCat = { id: "c" + Date.now(), businessId: req.businessId, name: trimmedName, group: trimmedGroup };
+    const newCat = { 
+      id: "c" + Date.now(), 
+      businessId: req.businessId, 
+      name: trimmedName, 
+      group: trimmedGroup,
+      lowStockThreshold: thresholdVal 
+    };
     mockDb.categories.push(newCat);
     return res.status(201).json(newCat);
   }
@@ -1428,11 +1630,12 @@ app.post("/api/reports/categories", auth, async (req: any, res: Response) => {
 
 app.put("/api/reports/categories/:id", auth, async (req: any, res: Response) => {
   const { id } = req.params;
-  const { name, group } = req.body;
+  const { name, group, lowStockThreshold } = req.body;
   if (!name || !group) return res.status(400).json({ error: "Name and group are required elements" });
 
   const trimmedName = name.trim();
   const trimmedGroup = group.trim();
+  const thresholdVal = (lowStockThreshold !== undefined && lowStockThreshold !== null && lowStockThreshold !== "") ? Number(lowStockThreshold) : null;
 
   if (prisma) {
     try {
@@ -1444,7 +1647,14 @@ app.put("/api/reports/categories/:id", auth, async (req: any, res: Response) => 
       });
       if (duplicate) return res.status(409).json({ error: "Another category with this name exists" });
 
-      const cat = await prisma.category.update({ where: { id }, data: { name: trimmedName, group: trimmedGroup } });
+      const cat = await prisma.category.update({ 
+        where: { id }, 
+        data: { 
+          name: trimmedName, 
+          group: trimmedGroup,
+          lowStockThreshold: thresholdVal
+        } 
+      });
       return res.json(cat);
     } catch (err: any) {
       return res.status(500).json({ error: err.message });
@@ -1456,7 +1666,11 @@ app.put("/api/reports/categories/:id", auth, async (req: any, res: Response) => 
     const duplicate = mockDb.categories.find((c) => c.businessId === req.businessId && c.name.toLowerCase() === trimmedName.toLowerCase() && c.id !== id);
     if (duplicate) return res.status(409).json({ error: "Category name duplicates another active record" });
 
-    Object.assign(cat, { name: trimmedName, group: trimmedGroup });
+    Object.assign(cat, { 
+      name: trimmedName, 
+      group: trimmedGroup,
+      lowStockThreshold: thresholdVal 
+    });
     return res.json(cat);
   }
 });
@@ -1516,12 +1730,17 @@ const startServer = async () => {
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
+    // Serve src/assets as static fallback so raw references always resolve perfectly in production
+    app.use("/src/assets", express.static(path.join(process.cwd(), "src/assets")));
     app.get("*", (req: Request, res: Response) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
 
   const serverInstance = http.createServer(app);
+  if (prisma) {
+    await seedPrismaDatabase();
+  }
   serverInstance.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running at http://localhost:${PORT}`);
   });

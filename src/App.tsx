@@ -30,13 +30,15 @@ import {
   LockKeyhole
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-const logoImage = "/src/assets/images/yeboah_logo_1781302319870.jpg";
+// @ts-ignore
+import logoImage from "./assets/images/yeboah_logo_1781302319870.jpg";
 
 // Types
 interface Category {
   id: string;
   name: string;
   group: string;
+  lowStockThreshold?: number;
 }
 
 interface InventoryItem {
@@ -166,6 +168,7 @@ export default function App() {
   // Categories Manager Form states
   const [newCatName, setNewCatName] = useState("");
   const [newCatGroup, setNewCatGroup] = useState("");
+  const [newCatThreshold, setNewCatThreshold] = useState<number | "">("");
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
 
   // User Manager Form states
@@ -553,7 +556,7 @@ export default function App() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ name: newCatName, group: newCatGroup })
+        body: JSON.stringify({ name: newCatName, group: newCatGroup, lowStockThreshold: newCatThreshold === "" ? null : newCatThreshold })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Duplicate name or constraint failure");
@@ -561,6 +564,7 @@ export default function App() {
       toast(editingCategory ? "Category credentials updated" : "Category registration finalized");
       setNewCatName("");
       setNewCatGroup("");
+      setNewCatThreshold("");
       setEditingCategory(null);
       fetchAllData(token);
     } catch (e: any) {
@@ -1484,7 +1488,11 @@ export default function App() {
                       ) : (
                         inventory.map((item) => {
                           const catName = categories.find(c => c.id === item.categoryId)?.name || "Uncategorized";
-                          const isLowStock = item.quantity <= (settings.lowStockThreshold || 8);
+                          const category = categories.find(c => c.id === item.categoryId);
+                          const threshold = category && category.lowStockThreshold !== undefined && category.lowStockThreshold !== null
+                            ? category.lowStockThreshold
+                            : (settings.lowStockThreshold || 8);
+                          const isLowStock = item.quantity <= threshold;
                           return (
                             <tr key={item.id} className={`transition-all ${
                               isLowStock
@@ -1696,8 +1704,10 @@ export default function App() {
                               <td className="p-3 text-center font-mono text-indigo-600 dark:text-indigo-400">
                                 {grandTotalSoldQuantity}
                               </td>
-                              <td className="p-3 text-center font-mono text-slate-700 dark:text-slate-350">
-                                {fmtMoney(grandTotalSoldCost)}
+                              <td className="p-3 text-center font-mono">
+                                <span className="bg-rose-100/70 dark:bg-rose-950/40 text-rose-600 dark:text-rose-450 font-extrabold px-2.5 py-1 rounded-md border border-rose-200/50 dark:border-rose-900/60 shadow-sm inline-block">
+                                  {fmtMoney(grandTotalSoldCost)}
+                                </span>
                               </td>
                               <td className="p-3 text-center font-mono text-slate-700 dark:text-slate-300">
                                 {fmtMoney(grandTotalAssetCost)}
@@ -1752,8 +1762,15 @@ export default function App() {
                             <td className="p-3 text-center font-black text-red-600 dark:text-red-400">
                               {i.quantity} units left
                             </td>
-                            <td className="p-3 text-center font-semibold text-slate-400">
-                              Low Stock threshold configured: {settings.lowStockThreshold || 8}
+                            <td className="p-3 text-center font-semibold text-slate-450 dark:text-slate-450">
+                              Low Stock threshold: {
+                                (() => {
+                                  const category = categories.find(c => c.id === i.categoryId);
+                                  return (category && category.lowStockThreshold !== undefined && category.lowStockThreshold !== null)
+                                    ? `${category.lowStockThreshold} (Category-specific: ${category.name})`
+                                    : `${settings.lowStockThreshold || 8} (Global)`;
+                                })()
+                              }
                             </td>
                           </tr>
                         ))}
@@ -1778,8 +1795,8 @@ export default function App() {
                     <div key={cat.id} className="p-4 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-250/30 dark:border-slate-800/20 flex justify-between items-center text-sm md:text-sm">
                       <div>
                         <h4 className="font-extrabold text-slate-900 dark:text-white">{cat.name}</h4>
-                        <span className="text-[11px] font-bold uppercase text-slate-400 mt-1 block">
-                          Group: {cat.group || "General"}
+                        <span className="text-[11px] font-bold uppercase text-slate-400 mt-1 block font-mono">
+                          Group: {cat.group || "General"} • Min stock limit: {cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null ? `${cat.lowStockThreshold} units` : `Inherited (${settings.lowStockThreshold || 8})`}
                         </span>
                       </div>
                       <div className="flex gap-1 justify-end bg-transparent shrink-0">
@@ -1788,6 +1805,7 @@ export default function App() {
                             setEditingCategory(cat);
                             setNewCatName(cat.name);
                             setNewCatGroup(cat.group);
+                            setNewCatThreshold(cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null ? cat.lowStockThreshold : "");
                           }}
                           className="p-1.5 text-slate-500 hover:text-emerald-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg shrink-0"
                           title="Modify attributes"
@@ -1835,6 +1853,19 @@ export default function App() {
                       className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
                       placeholder="e.g. Accessories / Power"
                     />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs font-black uppercase tracking-wider text-slate-400 text-[11px]">Category Stock threshold criteria (inherits default if empty)</label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={newCatThreshold}
+                      onChange={(e) => setNewCatThreshold(e.target.value === "" ? "" : Number(e.target.value))}
+                      className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                      placeholder={`Inheriting General: ${settings.lowStockThreshold || 8}`}
+                    />
+                    <p className="text-[10px] text-slate-500 font-medium">Leave this parameter blank to make this category dynamically inherit the store-wide default alert threshold.</p>
                   </div>
 
                   <div className="flex gap-2">
@@ -2060,6 +2091,101 @@ export default function App() {
                   Commit Records
                 </button>
               </form>
+
+              {/* Category-Specific Low Stock Alert Criteria */}
+              <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm mt-6">
+                <h3 className="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-widest mb-4 border-b pb-3 border-slate-105 dark:border-slate-800">
+                  Category-Specific Low Stock Alert Criteria
+                </h3>
+                <p className="text-xs text-slate-500 mb-4">
+                  Define custom low-stock thresholds for each accessory category. Items in these categories will use their specified threshold instead of the general shop threshold.
+                </p>
+                <div className="space-y-3">
+                  {categories.map((cat) => (
+                    <div key={cat.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-850 bg-slate-50/50 dark:bg-slate-950/20">
+                      <div>
+                        <span className="font-extrabold text-slate-900 dark:text-white text-sm">{cat.name}</span>
+                        <span className="ml-2 text-[10px] font-bold uppercase text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">{cat.group}</span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-2 bg-transparent">
+                          <label className="text-xs text-slate-500 whitespace-nowrap text-[11px] font-bold">Alert Threshold:</label>
+                          <input
+                            type="number"
+                            min="0"
+                            placeholder={`${settings.lowStockThreshold || 8}`}
+                            value={cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null ? cat.lowStockThreshold : ""}
+                            onChange={async (e) => {
+                              const val = e.target.value === "" ? "" : Number(e.target.value);
+                              setCategories(categories.map(c => c.id === cat.id ? { ...c, lowStockThreshold: val === "" ? null : val } : c));
+                              try {
+                                const res = await fetch(`/api/reports/categories/${cat.id}`, {
+                                  method: "PUT",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: `Bearer ${token}`
+                                  },
+                                  body: JSON.stringify({ name: cat.name, group: cat.group, lowStockThreshold: val === "" ? null : val })
+                                });
+                                if (!res.ok) {
+                                  const errData = await res.json();
+                                  toast(errData.error || "Failed to update category threshold criteria");
+                                } else {
+                                  fetchAllData(token!);
+                                  toast(`Updated ${cat.name} threshold to ${val === "" ? "Inherited Global" : val}`);
+                                }
+                              } catch (e: any) {
+                                toast(e.message);
+                              }
+                            }}
+                            className="px-2 w-16 h-[32px] rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-black text-center"
+                          />
+                          <span className="text-xs text-slate-450 dark:text-slate-500 font-bold">units</span>
+                        </div>
+                        <div className="text-xs shrink-0 bg-transparent">
+                          {cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null ? (
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                setCategories(categories.map(c => c.id === cat.id ? { ...c, lowStockThreshold: null } : c));
+                                try {
+                                  const res = await fetch(`/api/reports/categories/${cat.id}`, {
+                                    method: "PUT",
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      Authorization: `Bearer ${token}`
+                                    },
+                                    body: JSON.stringify({ name: cat.name, group: cat.group, lowStockThreshold: null })
+                                  });
+                                  if (!res.ok) {
+                                    const errData = await res.json();
+                                    toast(errData.error || "Failed to reset threshold");
+                                  } else {
+                                    fetchAllData(token!);
+                                    toast(`Reset ${cat.name} threshold to inherit global default.`);
+                                  }
+                                } catch (e: any) {
+                                  toast(e.message);
+                                }
+                              }}
+                              className="text-[10px] bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded transition-all font-bold cursor-pointer"
+                            >
+                              Reset to Global Default
+                            </button>
+                          ) : (
+                            <span className="text-[10px] bg-emerald-50 dark:bg-emerald-950/35 text-emerald-600 dark:text-emerald-450 px-2 py-1 rounded font-black tracking-wider uppercase">
+                              Inheriting Global Default
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {categories.length === 0 && (
+                    <p className="text-xs text-slate-400 italic text-center p-4">No categories registered yet.</p>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 
