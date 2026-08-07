@@ -1,59 +1,56 @@
 generator client {
-  provider = "prisma-client-js"
-  engineType = "library"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
+  engineType    = "library"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
 model Business {
-  id        String   @id @default(uuid())
-  name      String
-  createdAt DateTime @default(now())
-
-  users         User[]
-  categories    Category[]
-  inventory     InventoryItem[]
-  stockHistory  StockHistory[]
-  notifications Notification[]
+  id                     String                 @id @default(uuid())
+  name                   String
+  createdAt              DateTime               @default(now())
+  auditLogs              AuditLog[]
+  categories             Category[]
+  inventory              InventoryItem[]
   notificationDeliveries NotificationDelivery[]
-  passwordResets PasswordResetToken[]
-  auditLogs     AuditLog[]
-  settings      Setting?
+  notifications          Notification[]
+  passwordResets         PasswordResetToken[]
+  settings               Setting?
+  stockHistory           StockHistory[]
+  users                  User[]
 
   @@map("businesses")
 }
 
 model User {
-  id           String   @id @default(uuid())
-  businessId   String
-  name         String
-  email        String   @unique
-  role         Role
-  passwordHash String
-  createdAt    DateTime @default(now())
-
-  business      Business       @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  notifications Notification[]
+  id             String               @id @default(uuid())
+  businessId     String
+  name           String
+  email          String               @unique
+  role           Role
+  passwordHash   String
+  createdAt      DateTime             @default(now())
+  auditLogs      AuditLog[]
+  notifications  Notification[]
   passwordResets PasswordResetToken[]
-  auditLogs     AuditLog[]
+  business       Business             @relation(fields: [businessId], references: [id], onDelete: Cascade)
 
   @@index([businessId])
   @@map("users")
 }
 
 model Category {
-  id         String @id @default(uuid())
+  id         String          @id @default(uuid())
   businessId String
   name       String
   group      String
-
-  business  Business        @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  inventory InventoryItem[]
+  business   Business        @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  inventory  InventoryItem[]
 
   @@unique([businessId, name])
   @@index([businessId])
@@ -61,23 +58,22 @@ model Category {
 }
 
 model InventoryItem {
-  id           String   @id @default(uuid())
+  id           String         @id @default(uuid())
   businessId   String
   categoryId   String
   name         String
   sku          String
   type         String
   quantity     Int
-  soldQuantity Int      @default(0)
-  costPrice    Decimal  @db.Decimal(12, 2)
-  sellingPrice Decimal  @db.Decimal(12, 2)
+  soldQuantity Int            @default(0)
+  costPrice    Decimal        @db.Decimal(12, 2)
+  sellingPrice Decimal        @db.Decimal(12, 2)
   location     String
   barcode      String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  category Category @relation(fields: [categoryId], references: [id])
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  business     Business       @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  category     Category       @relation(fields: [categoryId], references: [id])
   stockHistory StockHistory[]
 
   @@index([businessId])
@@ -88,7 +84,7 @@ model InventoryItem {
 }
 
 model StockHistory {
-  id           String   @id @default(uuid())
+  id           String        @id @default(uuid())
   businessId   String
   userId       String?
   categoryId   String
@@ -96,11 +92,10 @@ model StockHistory {
   action       String
   oldQuantity  Int
   newQuantity  Int
-  soldQuantity Int      @default(0)
-  createdAt    DateTime @default(now())
-
-  business Business      @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  item     InventoryItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  soldQuantity Int           @default(0)
+  createdAt    DateTime      @default(now())
+  business     Business      @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  item         InventoryItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
 
   @@index([businessId])
   @@index([categoryId])
@@ -109,32 +104,30 @@ model StockHistory {
 }
 
 model Notification {
-  id         String   @id @default(uuid())
+  id         String                 @id @default(uuid())
   businessId String
   userId     String
   message    String
-  read       Boolean  @default(false)
-  createdAt  DateTime @default(now())
-
-  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  read       Boolean                @default(false)
+  createdAt  DateTime               @default(now())
   deliveries NotificationDelivery[]
+  business   Business               @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user       User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([businessId, userId])
   @@map("notifications")
 }
 
 model NotificationDelivery {
-  id             String   @id @default(uuid())
+  id             String       @id @default(uuid())
   businessId     String
   notificationId String
   channel        String
   destination    String
   status         String
-  createdAt      DateTime @default(now())
-
-  business     Business     @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  notification Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now())
+  business       Business     @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  notification   Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
 
   @@index([businessId])
   @@index([notificationId])
@@ -149,9 +142,8 @@ model PasswordResetToken {
   createdAt  DateTime  @default(now())
   expiresAt  DateTime
   usedAt     DateTime?
-
-  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  business   Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([businessId, userId])
   @@index([expiresAt])
@@ -164,28 +156,26 @@ model AuditLog {
   userId     String?
   action     String
   createdAt  DateTime @default(now())
-
-  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  user     User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user       User?    @relation(fields: [userId], references: [id])
 
   @@index([businessId])
   @@map("audit_logs")
 }
 
 model Setting {
-  id                      String  @id @default(uuid())
-  businessId              String  @unique
-  lowStockThreshold       Int     @default(8)
-  darkMode                Boolean @default(false)
-  notifyCeoOnManagerStock Boolean @default(true)
-  emailNotifications      Boolean @default(true)
-  smsNotifications        Boolean @default(false)
-  accountingProvider      String  @default("CSV")
-  accountingEmail         String  @default("")
-  smsPhone                String  @default("")
-  currency                String  @default("USD")
-
-  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  id                      String   @id @default(uuid())
+  businessId              String   @unique
+  lowStockThreshold       Int      @default(8)
+  darkMode                Boolean  @default(false)
+  notifyCeoOnManagerStock Boolean  @default(true)
+  emailNotifications      Boolean  @default(true)
+  smsNotifications        Boolean  @default(false)
+  accountingProvider      String   @default("CSV")
+  accountingEmail         String   @default("")
+  smsPhone                String   @default("")
+  currency                String   @default("USD")
+  business                Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
 
   @@map("settings")
 }

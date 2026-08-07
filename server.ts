@@ -1014,11 +1014,12 @@ app.put("/api/inventory/:id", auth, async (req: any, res: Response) => {
       const inputQty = quantity !== undefined ? Number(quantity) : oldQty;
       const inputSold = soldQuantity !== undefined ? Number(soldQuantity) : oldSold;
 
-      const soldDiff = inputSold - oldSold;
-      const qtyDiff = inputQty - oldQty;
-      let calculatedQty = oldQty + qtyDiff - soldDiff;
-      if (calculatedQty < 0) {
-        calculatedQty = 0;
+      let calculatedQty = inputQty;
+      if (quantity === undefined && soldQuantity !== undefined) {
+        const soldDiff = inputSold - oldSold;
+        calculatedQty = Math.max(0, oldQty - soldDiff);
+      } else {
+        calculatedQty = Math.max(0, inputQty);
       }
 
       const item = await prisma.inventoryItem.update({
@@ -1076,11 +1077,12 @@ app.put("/api/inventory/:id", auth, async (req: any, res: Response) => {
     const inputQty = quantity !== undefined ? Number(quantity) : oldQty;
     const inputSold = soldQuantity !== undefined ? Number(soldQuantity) : oldSold;
 
-    const soldDiff = inputSold - oldSold;
-    const qtyDiff = inputQty - oldQty;
-    let calculatedQty = oldQty + qtyDiff - soldDiff;
-    if (calculatedQty < 0) {
-      calculatedQty = 0;
+    let calculatedQty = inputQty;
+    if (quantity === undefined && soldQuantity !== undefined) {
+      const soldDiff = inputSold - oldSold;
+      calculatedQty = Math.max(0, oldQty - soldDiff);
+    } else {
+      calculatedQty = Math.max(0, inputQty);
     }
 
     Object.assign(item, {
