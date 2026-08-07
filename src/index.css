@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;750;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", Courier, monospace;
+  
+  --color-brand-bg: #F8FAFC;
+  --color-brand-sidebar: #0F172A;
+  --color-brand-accent: #10B981;
+  --color-brand-border: #E2E8F0;
+  --color-brand-text: #1E293B;
+  --color-brand-muted: #64748B;
+}
+
+/* Scrollbar adjustment for minimalism */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Custom class presets from Clean Minimalism template */
+.data-mono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.low-stock-row {
+  border-left: 4px solid #EF4444 !important;
+}
+
+.low-stock-row-warning {
+  border-left: 4px solid #F59E0B !important;
+}
