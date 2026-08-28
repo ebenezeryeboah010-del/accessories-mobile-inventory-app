@@ -28,7 +28,12 @@ import {
   ChevronRight,
   UserCheck,
   LockKeyhole,
-  ShoppingBag
+  ShoppingBag,
+  Tag,
+  Layers,
+  Search,
+  Sparkles,
+  SlidersHorizontal
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 // @ts-ignore
@@ -168,11 +173,40 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
 
-  // Categories Manager Form states
+  // Section Group Presets for quick selection & customization
+  const PRESET_SECTION_GROUPS = [
+    "Electricals",
+    "Phones",
+    "Accessories",
+    "Power & Charging",
+    "Audio & Sound",
+    "Cases & Protection",
+    "Screen Protectors",
+    "Cables & Adapters",
+    "Smartwatches & Wearables",
+    "Holders & Mounts",
+    "Storage & Spares"
+  ];
+
+  // Custom Category writing state in Add/Edit Item modal
+  const [isWritingCustomCategory, setIsWritingCustomCategory] = useState(false);
+  const [customCatName, setCustomCatName] = useState("");
+  const [customCatGroup, setCustomCatGroup] = useState("Accessories");
+  const [customCatThreshold, setCustomCatThreshold] = useState<number | "">("");
+
+  // Categories Manager Form & Catalogue Filtering states
   const [newCatName, setNewCatName] = useState("");
-  const [newCatGroup, setNewCatGroup] = useState("");
+  const [newCatGroup, setNewCatGroup] = useState("Accessories");
   const [newCatThreshold, setNewCatThreshold] = useState<number | "">("");
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
+  const [catSearchQuery, setCatSearchQuery] = useState("");
+  const [catGroupFilter, setCatGroupFilter] = useState("");
+
+  // Quick Category Modal state (accessible across workspaces)
+  const [isQuickCategoryModalOpen, setIsQuickCategoryModalOpen] = useState(false);
+  const [quickCatName, setQuickCatName] = useState("");
+  const [quickCatGroup, setQuickCatGroup] = useState("Accessories");
+  const [quickCatThreshold, setQuickCatThreshold] = useState<number | "">("");
 
   // User Manager Form states
   const [newUser, setNewUser] = useState({
@@ -488,17 +522,71 @@ export default function App() {
     e.preventDefault();
     if (!token) return;
 
-    const url = editingItem ? `/api/inventory/${editingItem.id}` : "/api/inventory";
-    const method = editingItem ? "PUT" : "POST";
-
     try {
+      let targetCategoryId = itemForm.categoryId;
+
+      // If user is writing/adding a custom category inline on the item form
+      if (isWritingCustomCategory || itemForm.categoryId === "NEW_CUSTOM") {
+        if (!customCatName.trim()) {
+          toast("Please enter a custom category name.");
+          return;
+        }
+
+        const trimmedName = customCatName.trim();
+        const trimmedGroup = customCatGroup.trim() || "Accessories";
+        const existingCat = categories.find(
+          (c) => c.name.toLowerCase() === trimmedName.toLowerCase()
+        );
+
+        if (existingCat) {
+          targetCategoryId = existingCat.id;
+        } else {
+          // Create the custom category on the fly
+          const catRes = await fetch("/api/reports/categories", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              name: trimmedName,
+              group: trimmedGroup,
+              lowStockThreshold: customCatThreshold === "" ? null : customCatThreshold
+            })
+          });
+
+          if (!catRes.ok) {
+            const errData = await catRes.json();
+            throw new Error(errData.error || "Failed to create custom category");
+          }
+
+          const createdCategory = await catRes.json();
+          targetCategoryId = createdCategory.id;
+          setCategories((prev) => [...prev, createdCategory]);
+          toast(`Custom category "${trimmedName}" created and assigned.`);
+        }
+      }
+
+      if (!targetCategoryId) {
+        toast("Please select or write a section category.");
+        return;
+      }
+
+      const itemPayload = {
+        ...itemForm,
+        categoryId: targetCategoryId
+      };
+
+      const url = editingItem ? `/api/inventory/${editingItem.id}` : "/api/inventory";
+      const method = editingItem ? "PUT" : "POST";
+
       const res = await fetch(url, {
         method,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(itemForm)
+        body: JSON.stringify(itemPayload)
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed item action validation");
@@ -506,6 +594,10 @@ export default function App() {
       toast(editingItem ? "Stock item updated successfully" : "Added catalog item successfully");
       setIsAddingItem(false);
       setEditingItem(null);
+      setIsWritingCustomCategory(false);
+      setCustomCatName("");
+      setCustomCatGroup("Accessories");
+      setCustomCatThreshold("");
       setItemForm({
         name: "",
         categoryId: "",
@@ -601,10 +693,16 @@ export default function App() {
   // CATEGORY OPERATIONS (CRUD)
   const handleSaveCategory = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!token || !newCatName || !newCatGroup) {
-      toast("Category metrics incomplete");
+    if (!token) return;
+
+    if (!newCatName.trim()) {
+      toast("Please enter a category name.");
       return;
     }
+
+    const trimmedName = newCatName.trim();
+    const trimmedGroup = newCatGroup.trim() || "Accessories";
+    const thresholdVal = newCatThreshold === "" ? null : Number(newCatThreshold);
 
     const url = editingCategory ? `/api/reports/categories/${editingCategory.id}` : "/api/reports/categories";
     const method = editingCategory ? "PUT" : "POST";
@@ -616,19 +714,72 @@ export default function App() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ name: newCatName, group: newCatGroup, lowStockThreshold: newCatThreshold === "" ? null : newCatThreshold })
+        body: JSON.stringify({
+          name: trimmedName,
+          group: trimmedGroup,
+          lowStockThreshold: thresholdVal
+        })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Duplicate name or constraint failure");
 
-      toast(editingCategory ? "Category credentials updated" : "Category registration finalized");
+      setCategories((prev) => {
+        const filtered = prev.filter((c) => c.id !== data.id);
+        return [...filtered, data].sort((a, b) => a.name.localeCompare(b.name));
+      });
+      toast(editingCategory ? `Category "${trimmedName}" updated successfully` : `Custom category "${trimmedName}" created in [${trimmedGroup}]`);
       setNewCatName("");
-      setNewCatGroup("");
+      setNewCatGroup("Electricals");
       setNewCatThreshold("");
       setEditingCategory(null);
       fetchAllData(token);
     } catch (e: any) {
       toast(e.message);
+    }
+  };
+
+  const handleQuickCreateCategory = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!token) return;
+
+    if (!quickCatName.trim()) {
+      toast("Please enter a category name.");
+      return;
+    }
+
+    const trimmedName = quickCatName.trim();
+    const trimmedGroup = quickCatGroup.trim() || "Electricals";
+    const thresholdVal = quickCatThreshold === "" ? null : Number(quickCatThreshold);
+
+    try {
+      const res = await fetch("/api/reports/categories", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          name: trimmedName,
+          group: trimmedGroup,
+          lowStockThreshold: thresholdVal
+        })
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to create category");
+
+      setCategories((prev) => {
+        const filtered = prev.filter((c) => c.id !== data.id);
+        return [...filtered, data].sort((a, b) => a.name.localeCompare(b.name));
+      });
+      toast(`Category "${trimmedName}" added to [${trimmedGroup}]`);
+      setQuickCatName("");
+      setQuickCatGroup("Electricals");
+      setQuickCatThreshold("");
+      setIsQuickCategoryModalOpen(false);
+      fetchAllData(token);
+    } catch (err: any) {
+      toast(err.message);
     }
   };
 
@@ -1611,26 +1762,42 @@ export default function App() {
 
               {/* Utility action toolbar */}
               <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
-                <div className="flex gap-2 w-full sm:w-auto">
+                <div className="flex flex-wrap gap-2 w-full sm:w-auto items-center">
                   <input
                     type="text"
                     placeholder="Search stock by name, SKU..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="px-3.5 w-[240px] h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                    className="px-3.5 w-full sm:w-[220px] h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
                   />
                   <select
                     value={categoryFilter}
                     onChange={(e) => setCategoryFilter(e.target.value)}
-                    className="px-3 w-[180px] h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                    className="px-3 w-full sm:w-[190px] h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm font-semibold"
                   >
-                    <option value="">All Categories</option>
+                    <option value="">All Categories ({categories.length})</option>
                     {categories.map((c) => (
                       <option key={c.id} value={c.id}>
-                        {c.name}
+                        {c.name} {c.group ? `[${c.group}]` : ""}
                       </option>
                     ))}
                   </select>
+
+                  {me?.role !== "Staff" && (
+                    <button
+                      onClick={() => {
+                        setQuickCatName("");
+                        setQuickCatGroup("Accessories");
+                        setQuickCatThreshold("");
+                        setIsQuickCategoryModalOpen(true);
+                      }}
+                      className="h-[44px] px-3.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-850 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-extrabold transition-all flex items-center gap-1.5 whitespace-nowrap border border-slate-200/80 dark:border-slate-800 cursor-pointer shadow-2xs"
+                      title="Write and register a new category"
+                    >
+                      <Tag className="w-3.5 h-3.5 text-emerald-500" />
+                      <span>+ Category</span>
+                    </button>
+                  )}
                 </div>
 
                 <div className="flex gap-3 w-full sm:w-auto justify-end bg-transparent">
@@ -2073,109 +2240,332 @@ export default function App() {
         })()}
 
           {activeTab === "categories" && (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-transparent">
-              {/* Category CRUD List */}
-              <div className="lg:col-span-7 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm">
-                <h3 className="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-widest mb-5">
-                  Category Catalogue
-                </h3>
-                <div className="space-y-3">
-                  {categories.map((cat) => (
-                    <div key={cat.id} className="p-4 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-250/30 dark:border-slate-800/20 flex justify-between items-center text-sm md:text-sm">
-                      <div>
-                        <h4 className="font-extrabold text-slate-900 dark:text-white">{cat.name}</h4>
-                        <span className="text-[11px] font-bold uppercase text-slate-400 mt-1 block font-mono">
-                          Group: {cat.group || "General"} • Min stock limit: {cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null ? `${cat.lowStockThreshold} units` : `Inherited (${settings.lowStockThreshold || 8})`}
-                        </span>
-                      </div>
-                      <div className="flex gap-1 justify-end bg-transparent shrink-0">
-                        <button
-                          onClick={() => {
-                            setEditingCategory(cat);
-                            setNewCatName(cat.name);
-                            setNewCatGroup(cat.group);
-                            setNewCatThreshold(cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null ? cat.lowStockThreshold : "");
-                          }}
-                          className="p-1.5 text-slate-500 hover:text-emerald-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg shrink-0"
-                          title="Modify attributes"
-                        >
-                          <Edit3 className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handleDeleteCategory(cat.id)}
-                          className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-slate-100 dark:hover:bg-slate-850 rounded-lg shrink-0"
-                          title="Delete category"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+            <div className="space-y-6">
+              {/* Category summary metrics */}
+              <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-slate-800">
+                <div className="flex items-center gap-3.5 pr-3">
+                  <div className="p-2.5 bg-emerald-500/10 text-emerald-500 rounded-xl">
+                    <FolderTree className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block">
+                      Total Categories
+                    </span>
+                    <span className="text-xl font-black text-slate-900 dark:text-white">
+                      {categories.length}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3.5 pt-3 md:pt-0 md:px-4">
+                  <div className="p-2.5 bg-sky-500/10 text-sky-500 rounded-xl">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block">
+                      Section Groups
+                    </span>
+                    <span className="text-xl font-black text-slate-900 dark:text-white">
+                      {new Set(categories.map((c) => c.group || "General")).size}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3.5 pt-3 md:pt-0 md:px-4">
+                  <div className="p-2.5 bg-teal-500/10 text-teal-500 rounded-xl">
+                    <Boxes className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block">
+                      Tracked Products
+                    </span>
+                    <span className="text-xl font-black text-slate-900 dark:text-white">
+                      {inventory.length}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3.5 pt-3 md:pt-0 md:pl-4">
+                  <div className="p-2.5 bg-amber-500/10 text-amber-500 rounded-xl">
+                    <AlertTriangle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block">
+                      Custom Limits Set
+                    </span>
+                    <span className="text-xl font-black text-slate-900 dark:text-white">
+                      {categories.filter((c) => c.lowStockThreshold !== undefined && c.lowStockThreshold !== null).length}
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Create/Update Form */}
-              <div className="lg:col-span-5 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm h-fit">
-                <h3 className="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-widest mb-5 border-b pb-3 border-slate-100 dark:border-slate-800">
-                  {editingCategory ? "Update Category" : "Configure Category"}
-                </h3>
-                <form onSubmit={handleSaveCategory} className="space-y-4">
-                  <div className="space-y-1">
-                    <label className="text-xs font-black uppercase tracking-wider text-slate-400">Category Name</label>
-                    <input
-                      type="text"
-                      required
-                      value={newCatName}
-                      onChange={(e) => setNewCatName(e.target.value)}
-                      className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-                      placeholder="e.g. Type-C Adapter Converters"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="text-xs font-black uppercase tracking-wider text-slate-400">Section Group Parent</label>
-                    <input
-                      type="text"
-                      required
-                      value={newCatGroup}
-                      onChange={(e) => setNewCatGroup(e.target.value)}
-                      className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-                      placeholder="e.g. Accessories / Power"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="text-xs font-black uppercase tracking-wider text-slate-400 text-[11px]">Category Stock threshold criteria (inherits default if empty)</label>
-                    <input
-                      type="number"
-                      min="0"
-                      value={newCatThreshold}
-                      onChange={(e) => setNewCatThreshold(e.target.value === "" ? "" : Number(e.target.value))}
-                      className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-                      placeholder={`Inheriting General: ${settings.lowStockThreshold || 8}`}
-                    />
-                    <p className="text-[10px] text-slate-500 font-medium">Leave this parameter blank to make this category dynamically inherit the store-wide default alert threshold.</p>
-                  </div>
-
-                  <div className="flex gap-2">
-                    <button type="submit" className="flex-1 bg-slate-900 dark:bg-slate-100 dark:text-slate-900 text-white h-[44px] rounded-lg font-bold text-sm shadow">
-                      {editingCategory ? "Synchronize" : "Finalize Category"}
-                    </button>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-transparent">
+                {/* Left: Category Configuration Studio Form */}
+                <div className="lg:col-span-5 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm h-fit">
+                  <div className="flex items-center justify-between border-b pb-3 border-slate-100 dark:border-slate-800 mb-5">
+                    <div>
+                      <h3 className="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-widest flex items-center gap-2">
+                        <Tag className="w-4 h-4 text-emerald-500" />
+                        <span>{editingCategory ? "Update Category" : "Category Studio"}</span>
+                      </h3>
+                      <p className="text-[11px] text-slate-400 font-medium mt-0.5">
+                        {editingCategory ? "Modifying category metrics" : "Write and add customizable categories"}
+                      </p>
+                    </div>
                     {editingCategory && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setEditingCategory(null);
-                          setNewCatName("");
-                          setNewCatGroup("");
-                        }}
-                        className="px-4 border border-slate-250 dark:border-slate-800 rounded-lg text-sm text-slate-500 h-[44px]"
-                      >
-                        Cancel
-                      </button>
+                      <span className="px-2 py-0.5 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-extrabold uppercase rounded">
+                        Editing
+                      </span>
                     )}
                   </div>
-                </form>
+
+                  <form onSubmit={handleSaveCategory} className="space-y-4">
+                    <div className="space-y-1">
+                      <label className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                        Category Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={newCatName}
+                        onChange={(e) => setNewCatName(e.target.value)}
+                        className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                        placeholder="e.g. Magnetic Power Banks, Fast Chargers"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <label className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                          Section Group Parent
+                        </label>
+                        <span className="text-[10px] text-slate-400 font-semibold">
+                          Click pill or write custom
+                        </span>
+                      </div>
+
+                      {/* Quick preset group selector buttons */}
+                      <div className="flex flex-wrap gap-1.5 p-2 bg-slate-50 dark:bg-slate-850/50 rounded-lg border border-slate-100 dark:border-slate-800">
+                        {PRESET_SECTION_GROUPS.map((grp) => (
+                          <button
+                            key={grp}
+                            type="button"
+                            onClick={() => setNewCatGroup(grp)}
+                            className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                              newCatGroup.toLowerCase() === grp.toLowerCase()
+                                ? "bg-emerald-600 text-white shadow-xs"
+                                : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800"
+                            }`}
+                          >
+                            {grp}
+                          </button>
+                        ))}
+                      </div>
+
+                      <input
+                        type="text"
+                        required
+                        value={newCatGroup}
+                        onChange={(e) => setNewCatGroup(e.target.value)}
+                        className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                        placeholder="e.g. Accessories / Power (or write any custom group)"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 text-[11px]">
+                        Category Alert Limit (optional units)
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        value={newCatThreshold}
+                        onChange={(e) => setNewCatThreshold(e.target.value === "" ? "" : Number(e.target.value))}
+                        className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                        placeholder={`Inheriting Global Default: ${settings.lowStockThreshold || 8} units`}
+                      />
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+                        Leave blank to dynamically inherit the global store alert threshold ({settings.lowStockThreshold || 8} units).
+                      </p>
+                    </div>
+
+                    {/* Live Preview of the Custom Category Badge */}
+                    {newCatName.trim() && (
+                      <div className="p-3 bg-slate-50 dark:bg-slate-850/60 rounded-lg border border-slate-200/60 dark:border-slate-800 space-y-1.5">
+                        <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider block">
+                          Live Category Preview:
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-md font-extrabold text-xs">
+                            {newCatName.trim()}
+                          </span>
+                          <span className="px-2 py-0.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded text-[11px] font-bold">
+                            {newCatGroup.trim() || "Accessories"}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex gap-2 pt-2">
+                      <button
+                        type="submit"
+                        className="flex-1 bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-white dark:text-slate-900 text-white h-[44px] rounded-lg font-extrabold text-sm shadow cursor-pointer transition-all flex items-center justify-center gap-2"
+                      >
+                        <Plus className="w-4 h-4" />
+                        <span>{editingCategory ? "Synchronize Changes" : "Save Custom Category"}</span>
+                      </button>
+                      {editingCategory && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditingCategory(null);
+                            setNewCatName("");
+                            setNewCatGroup("Accessories");
+                            setNewCatThreshold("");
+                          }}
+                          className="px-4 border border-slate-200 dark:border-slate-800 rounded-lg text-sm text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 h-[44px] font-bold cursor-pointer"
+                        >
+                          Cancel
+                        </button>
+                      )}
+                    </div>
+                  </form>
+                </div>
+
+                {/* Right: Category Catalogue Directory */}
+                <div className="lg:col-span-7 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200/50 dark:border-slate-850 shadow-sm flex flex-col">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+                    <div>
+                      <h3 className="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-widest flex items-center gap-2">
+                        <FolderTree className="w-4 h-4 text-emerald-500" />
+                        <span>Category Catalogue ({categories.length})</span>
+                      </h3>
+                      <p className="text-[11px] text-slate-400 font-medium mt-0.5">
+                        Manage section categories and customize thresholds
+                      </p>
+                    </div>
+
+                    <div className="flex gap-2 items-center">
+                      <input
+                        type="text"
+                        placeholder="Filter categories..."
+                        value={catSearchQuery}
+                        onChange={(e) => setCatSearchQuery(e.target.value)}
+                        className="px-3 h-[38px] w-full sm:w-[170px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs"
+                      />
+                      <select
+                        value={catGroupFilter}
+                        onChange={(e) => setCatGroupFilter(e.target.value)}
+                        className="px-2.5 h-[38px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold"
+                      >
+                        <option value="">All Groups</option>
+                        {Array.from(new Set(categories.map((c) => c.group || "General"))).map((grp) => (
+                          <option key={grp} value={grp}>
+                            {grp}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* List of categories */}
+                  {(() => {
+                    const filteredCats = categories.filter((c) => {
+                      const matchesSearch =
+                        !catSearchQuery.trim() ||
+                        c.name.toLowerCase().includes(catSearchQuery.toLowerCase()) ||
+                        (c.group && c.group.toLowerCase().includes(catSearchQuery.toLowerCase()));
+                      const matchesGroup = !catGroupFilter || (c.group || "General") === catGroupFilter;
+                      return matchesSearch && matchesGroup;
+                    });
+
+                    if (filteredCats.length === 0) {
+                      return (
+                        <div className="p-12 text-center border border-dashed border-slate-200 dark:border-slate-800 rounded-xl space-y-3">
+                          <Tag className="w-8 h-8 text-slate-400 mx-auto opacity-50" />
+                          <p className="text-sm font-bold text-slate-500">No categories found matching your filter.</p>
+                          <button
+                            onClick={() => {
+                              setCatSearchQuery("");
+                              setCatGroupFilter("");
+                            }}
+                            className="text-xs text-emerald-600 dark:text-emerald-400 font-bold underline"
+                          >
+                            Reset filters
+                          </button>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div className="space-y-3">
+                        {filteredCats.map((cat) => {
+                          const itemsInCat = inventory.filter((item) => item.categoryId === cat.id);
+                          const totalUnits = itemsInCat.reduce((sum, item) => sum + item.quantity, 0);
+
+                          return (
+                            <div
+                              key={cat.id}
+                              className="p-4 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-200/60 dark:border-slate-800/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-emerald-500/30 transition-all"
+                            >
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  <h4 className="font-extrabold text-slate-900 dark:text-white text-sm">
+                                    {cat.name}
+                                  </h4>
+                                  <span className="px-2 py-0.5 bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded text-[10px] font-bold uppercase tracking-wider">
+                                    {cat.group || "General"}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 text-[11px] text-slate-400 font-medium flex-wrap">
+                                  <span>
+                                    📦 <strong className="text-slate-700 dark:text-slate-300">{itemsInCat.length}</strong> products ({totalUnits} total units)
+                                  </span>
+                                  <span>•</span>
+                                  <span>
+                                    Min Stock:{" "}
+                                    {cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null ? (
+                                      <strong className="text-amber-600 dark:text-amber-400">{cat.lowStockThreshold} units (Custom)</strong>
+                                    ) : (
+                                      <span className="text-slate-400">Inherited ({settings.lowStockThreshold || 8})</span>
+                                    )}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="flex items-center gap-1.5 justify-end shrink-0">
+                                <button
+                                  onClick={() => {
+                                    setEditingCategory(cat);
+                                    setNewCatName(cat.name);
+                                    setNewCatGroup(cat.group || "Accessories");
+                                    setNewCatThreshold(
+                                      cat.lowStockThreshold !== undefined && cat.lowStockThreshold !== null
+                                        ? cat.lowStockThreshold
+                                        : ""
+                                    );
+                                  }}
+                                  className="p-2 text-slate-500 hover:text-emerald-600 hover:bg-white dark:hover:bg-slate-800 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all cursor-pointer"
+                                  title="Edit Category & Section"
+                                >
+                                  <Edit3 className="w-4 h-4" />
+                                </button>
+                                <button
+                                  onClick={() => handleDeleteCategory(cat.id)}
+                                  className="p-2 text-slate-400 hover:text-red-500 hover:bg-white dark:hover:bg-slate-800 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all cursor-pointer"
+                                  title="Delete Category"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  })()}
+                </div>
               </div>
             </div>
           )}
@@ -2516,20 +2906,139 @@ export default function App() {
                     />
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="text-xs font-black uppercase tracking-wider text-slate-400">Section Category</label>
-                    <select
-                      value={itemForm.categoryId}
-                      onChange={(e) => setItemForm({ ...itemForm, categoryId: e.target.value })}
-                      className="px-3 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-                    >
-                      {categories.map((c) => (
-                        <option key={c.id} value={c.id}>
-                          {c.name}
+                  {/* Customizable Section Category Selector / Creator */}
+                  {isWritingCustomCategory ? (
+                    <div className="space-y-3 md:col-span-2 p-4 bg-emerald-500/5 dark:bg-emerald-950/20 border border-emerald-500/30 dark:border-emerald-500/20 rounded-xl">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-extrabold text-xs uppercase tracking-wider">
+                          <Sparkles className="w-4 h-4" />
+                          <span>Write & Add Custom Category</span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsWritingCustomCategory(false);
+                            if (categories.length > 0 && itemForm.categoryId === "NEW_CUSTOM") {
+                              setItemForm({ ...itemForm, categoryId: categories[0].id });
+                            }
+                          }}
+                          className="text-[11px] font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 underline cursor-pointer"
+                        >
+                          ← Choose from existing categories
+                        </button>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="space-y-1">
+                          <label className="text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            Category Name <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={customCatName}
+                            onChange={(e) => setCustomCatName(e.target.value)}
+                            className="px-3.5 w-full h-[40px] rounded-lg border border-emerald-500/30 dark:border-emerald-500/20 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-emerald-500/40"
+                            placeholder="e.g. Fast Wireless Power Banks"
+                          />
+                        </div>
+
+                        <div className="space-y-1">
+                          <label className="text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            Section Group Parent
+                          </label>
+                          <input
+                            type="text"
+                            value={customCatGroup}
+                            onChange={(e) => setCustomCatGroup(e.target.value)}
+                            className="px-3.5 w-full h-[40px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                            placeholder="e.g. Power & Charging (or write your own)"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Quick Preset Group Chips */}
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                          Suggested Section Groups:
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {PRESET_SECTION_GROUPS.map((g) => (
+                            <button
+                              key={g}
+                              type="button"
+                              onClick={() => setCustomCatGroup(g)}
+                              className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
+                                customCatGroup.toLowerCase() === g.toLowerCase()
+                                  ? "bg-emerald-600 text-white shadow-xs"
+                                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                              }`}
+                            >
+                              {g}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                          Custom Min Stock Alert Threshold (optional, defaults to store setting)
+                        </label>
+                        <input
+                          type="number"
+                          min="0"
+                          value={customCatThreshold}
+                          onChange={(e) => setCustomCatThreshold(e.target.value === "" ? "" : Number(e.target.value))}
+                          className="px-3.5 w-full h-[36px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs"
+                          placeholder={`Inherit default (${settings.lowStockThreshold || 8} units)`}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <label className="text-xs font-black uppercase tracking-wider text-slate-400">
+                          Section Category
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsWritingCustomCategory(true);
+                            setCustomCatName("");
+                            setCustomCatGroup("Accessories");
+                            setCustomCatThreshold("");
+                          }}
+                          className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1 cursor-pointer"
+                        >
+                          <Sparkles className="w-3 h-3" />
+                          <span>+ Write New</span>
+                        </button>
+                      </div>
+                      <select
+                        value={itemForm.categoryId}
+                        onChange={(e) => {
+                          if (e.target.value === "NEW_CUSTOM") {
+                            setIsWritingCustomCategory(true);
+                            setCustomCatName("");
+                            setCustomCatGroup("Accessories");
+                            setCustomCatThreshold("");
+                          } else {
+                            setItemForm({ ...itemForm, categoryId: e.target.value });
+                          }
+                        }}
+                        className="px-3 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm font-medium"
+                      >
+                        <option value="NEW_CUSTOM" className="font-bold text-emerald-600">
+                          ✨ + Write & Add New Custom Category...
                         </option>
-                      ))}
-                    </select>
-                  </div>
+                        {categories.map((c) => (
+                          <option key={c.id} value={c.id}>
+                            {c.name} {c.group ? `[${c.group}]` : ""}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
 
                   <div className="space-y-1">
                     <label className="text-xs font-black uppercase tracking-wider text-slate-400">Subtype / Brand</label>
@@ -2648,6 +3157,115 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* Quick Category Creation Modal */}
+      {isQuickCategoryModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b pb-3 border-slate-100 dark:border-slate-800">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-black text-slate-900 dark:text-white leading-tight">
+                    Add Section Category
+                  </h3>
+                  <p className="text-xs text-slate-400 font-medium">Create a customizable store category</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsQuickCategoryModalOpen(false)}
+                className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleQuickCreateCategory} className="space-y-4">
+              <div className="space-y-1">
+                <label className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Category Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  autoFocus
+                  value={quickCatName}
+                  onChange={(e) => setQuickCatName(e.target.value)}
+                  className="px-3.5 w-full h-[44px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-emerald-500/30"
+                  placeholder="e.g. Wireless Charging Stands, Extension boards"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    Section Group Parent
+                  </label>
+                  <span className="text-[10px] text-slate-400 font-semibold">Pick suggested or type custom</span>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {PRESET_SECTION_GROUPS.map((g) => (
+                    <button
+                      key={g}
+                      type="button"
+                      onClick={() => setQuickCatGroup(g)}
+                      className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                        quickCatGroup.toLowerCase() === g.toLowerCase()
+                          ? "bg-emerald-600 text-white shadow-xs"
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                      }`}
+                    >
+                      {g}
+                    </button>
+                  ))}
+                </div>
+
+                <input
+                  type="text"
+                  value={quickCatGroup}
+                  onChange={(e) => setQuickCatGroup(e.target.value)}
+                  className="px-3.5 w-full h-[40px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                  placeholder="e.g. Electricals / Accessories / Power"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Custom Alert Threshold (optional)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  value={quickCatThreshold}
+                  onChange={(e) => setQuickCatThreshold(e.target.value === "" ? "" : Number(e.target.value))}
+                  className="px-3.5 w-full h-[40px] rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                  placeholder={`Inherit default (${settings.lowStockThreshold || 8} units)`}
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+                <button
+                  type="button"
+                  onClick={() => setIsQuickCategoryModalOpen(false)}
+                  className="px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold shadow-sm transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Create Category</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Delete Item Confirmation Modal */}
       {itemToDelete && (

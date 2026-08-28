@@ -83,6 +83,8 @@ function seedMockData() {
     { id: "c8", name: "Screen protectors", group: "Protection" },
     { id: "c9", name: "Phone batteries", group: "Power" },
     { id: "c10", name: "Other accessories", group: "Accessories" },
+    { id: "c11", name: "Extension boards & sockets", group: "Electricals" },
+    { id: "c12", name: "Power adapters & surge protectors", group: "Electricals" },
   ];
 
   defaultCats.forEach((c) => {
@@ -250,6 +252,8 @@ async function seedPrismaDatabase() {
       { id: "c8", name: "Screen protectors", group: "Protection" },
       { id: "c9", name: "Phone batteries", group: "Power" },
       { id: "c10", name: "Other accessories", group: "Accessories" },
+      { id: "c11", name: "Extension boards & sockets", group: "Electricals" },
+      { id: "c12", name: "Power adapters & surge protectors", group: "Electricals" },
     ];
 
     await Promise.all(
@@ -885,8 +889,51 @@ app.get("/api/inventory", auth, async (req: any, res: Response) => {
 app.post("/api/inventory", auth, async (req: any, res: Response) => {
   if (req.role === "Staff") return res.status(403).json({ error: "Auditing accounts cannot perform record updates" });
 
-  const { categoryId, name, quantity, soldQuantity, costPrice, sellingPrice, location, barcode, type } = req.body;
-  if (!categoryId || !name) return res.status(400).json({ error: "Category and product name elements are necessary" });
+  let { categoryId, customCategoryName, customCategoryGroup, name, quantity, soldQuantity, costPrice, sellingPrice, location, barcode, type } = req.body;
+  if (!name) return res.status(400).json({ error: "Product name element is necessary" });
+
+  // Handle on-the-fly custom category creation if user wrote a custom category
+  if ((!categoryId || categoryId === "NEW_CUSTOM" || categoryId === "new") && customCategoryName) {
+    const trimmedCatName = customCategoryName.trim();
+    const trimmedCatGroup = (customCategoryGroup || "").trim() || "General";
+
+    if (prisma) {
+      try {
+        let existingCat = await prisma.category.findFirst({
+          where: { businessId: req.businessId, name: { equals: trimmedCatName, mode: "insensitive" } }
+        });
+        if (!existingCat) {
+          existingCat = await prisma.category.create({
+            data: {
+              businessId: req.businessId,
+              name: trimmedCatName,
+              group: trimmedCatGroup,
+            }
+          });
+        }
+        categoryId = existingCat.id;
+      } catch (err: any) {
+        console.error("Failed to auto-create category in Prisma:", err);
+      }
+    } else {
+      let existingCat = mockDb.categories.find(
+        (c) => c.businessId === req.businessId && c.name.toLowerCase() === trimmedCatName.toLowerCase()
+      );
+      if (!existingCat) {
+        existingCat = {
+          id: "c_" + Date.now(),
+          businessId: req.businessId,
+          name: trimmedCatName,
+          group: trimmedCatGroup,
+          lowStockThreshold: null
+        };
+        mockDb.categories.push(existingCat);
+      }
+      categoryId = existingCat.id;
+    }
+  }
+
+  if (!categoryId) return res.status(400).json({ error: "Category and product name elements are necessary" });
 
   const sku = name.toUpperCase().replace(/[^A-Z0-9]+/g, "-").slice(0, 24);
 
@@ -1573,7 +1620,7 @@ app.get("/api/reports/low-stock", auth, async (req: any, res: Response) => {
 });
 
 // Category CRUDS (Mounting requested Endpoint paths on same service)
-app.get("/api/reports/categories", auth, async (req: any, res: Response) => {
+app.get(["/api/reports/categories", "/api/categories"], auth, async (req: any, res: Response) => {
   if (prisma) {
     try {
       const categories = await prisma.category.findMany({ where: { businessId: req.businessId }, orderBy: { name: "asc" } });
@@ -1587,12 +1634,12 @@ app.get("/api/reports/categories", auth, async (req: any, res: Response) => {
   }
 });
 
-app.post("/api/reports/categories", auth, async (req: any, res: Response) => {
+app.post(["/api/reports/categories", "/api/categories"], auth, async (req: any, res: Response) => {
   const { name, group, lowStockThreshold } = req.body;
-  if (!name || !group) return res.status(400).json({ error: "Name and group are required elements" });
+  if (!name || !name.trim()) return res.status(400).json({ error: "Category name is required" });
 
   const trimmedName = name.trim();
-  const trimmedGroup = group.trim();
+  const trimmedGroup = (group && group.trim()) || "General";
   const thresholdVal = (lowStockThreshold !== undefined && lowStockThreshold !== null && lowStockThreshold !== "") ? Number(lowStockThreshold) : null;
 
   if (prisma) {
@@ -1600,7 +1647,7 @@ app.post("/api/reports/categories", auth, async (req: any, res: Response) => {
       const existing = await prisma.category.findFirst({
         where: { businessId: req.businessId, name: { equals: trimmedName, mode: "insensitive" } }
       });
-      if (existing) return res.status(409).json({ error: "Category names already registered" });
+      if (existing) return res.status(409).json({ error: "Category name already registered" });
 
       const cat = await prisma.category.create({ 
         data: { 
@@ -1616,7 +1663,7 @@ app.post("/api/reports/categories", auth, async (req: any, res: Response) => {
     }
   } else {
     const exists = mockDb.categories.find((c) => c.businessId === req.businessId && c.name.toLowerCase() === trimmedName.toLowerCase());
-    if (exists) return res.status(409).json({ error: "Category name already exists in mock data" });
+    if (exists) return res.status(409).json({ error: "Category name already exists in database" });
 
     const newCat = { 
       id: "c" + Date.now(), 
@@ -1630,13 +1677,13 @@ app.post("/api/reports/categories", auth, async (req: any, res: Response) => {
   }
 });
 
-app.put("/api/reports/categories/:id", auth, async (req: any, res: Response) => {
+app.put(["/api/reports/categories/:id", "/api/categories/:id"], auth, async (req: any, res: Response) => {
   const { id } = req.params;
   const { name, group, lowStockThreshold } = req.body;
-  if (!name || !group) return res.status(400).json({ error: "Name and group are required elements" });
+  if (!name || !name.trim()) return res.status(400).json({ error: "Category name is required" });
 
   const trimmedName = name.trim();
-  const trimmedGroup = group.trim();
+  const trimmedGroup = (group && group.trim()) || "General";
   const thresholdVal = (lowStockThreshold !== undefined && lowStockThreshold !== null && lowStockThreshold !== "") ? Number(lowStockThreshold) : null;
 
   if (prisma) {
@@ -1677,7 +1724,7 @@ app.put("/api/reports/categories/:id", auth, async (req: any, res: Response) => 
   }
 });
 
-app.delete("/api/reports/categories/:id", auth, async (req: any, res: Response) => {
+app.delete(["/api/reports/categories/:id", "/api/categories/:id"], auth, async (req: any, res: Response) => {
   const { id } = req.params;
 
   if (prisma) {
